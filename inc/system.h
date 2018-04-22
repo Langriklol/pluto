@@ -3,17 +3,9 @@
 #include "types.h"
 
 // Get value from port; p.g. cursor handling
-uint8 inportb(uint16 _port)
-{
-    uint8 rv;
-    __asm__ __volatile__ ("inb %1, %0" : "=a" (rv) : "dN" (_port));
-    return rv;
-}
+uint8 inportb(uint16 _port);
 
 // Writing data to port
-void outportb (uint16 _port, uint8 _data)
-{
-    __asm__ __volatile__ ("outb %1, %0" : : "dN" (_port), "a" (_data));
-}
+void outportb (uint16 _port, uint8 _data);
 
 #endif

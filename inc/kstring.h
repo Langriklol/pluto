@@ -2,11 +2,9 @@
 #define KSTRING_H
 
 #include "types.h"
-uint16 kstrlen(char* ch)
-{
-    uint16 i = 1;
-    while(ch[i++]);
-    return --i;
-}
+
+uint16 kstrlen(char* ch);
+
+uint16 kStrEql(char* origin, char* comparate);
 
 #endif
