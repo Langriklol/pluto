@@ -1,7 +1,3 @@
-//
-// Created by lango on 4/22/18.
-//
-
 #include "screen.h"
 
 int axisX = 0, axisY = 0;

@@ -6,8 +6,8 @@ section         .text
         dd      - (0x1BADB002+0x00)
         
 global start
-extern kmain            ;External C++ function
+extern kernel_main                 ;External C++ function
 start:
-        cli             ;Clears the interrupts 
-        call kmain      ;Continues in C++ code (kernel.cpp)
-        hlt             ;Halt the cpu
+        cli                  ;Clears the interrupts
+        call kernel_main     ;Continues in C++ code (kernel.cpp)
+        hlt                  ;Halt the cpu

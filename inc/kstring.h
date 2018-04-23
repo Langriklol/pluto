@@ -7,4 +7,6 @@ uint16 kstrlen(char* ch);
 
 uint16 kStrEql(char* origin, char* comparate);
 
+bool kStrStartsWith(char* string, char* needle);
+
 #endif
