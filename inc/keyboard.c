@@ -145,9 +145,8 @@ char* readStr()
                     i++;
                     break;
                 case 28:
-                    kprintch('\n', 0x0F);
-                    buffer[i] = '\n';
-                    i++;
+                    //kprintch('\n', 0x0F);             //Enter
+                    //buffer[i] = '\n';
                     reading = 0;
                     break;
                     /*  case 29:
@@ -215,16 +214,16 @@ char* readStr()
                     buffer[i] = (char)44;
                     i++;
                     break;
-                    /* case 42:                                 Left shift
+                   /* case 42:                                 //Left shift
                                kprintch('q');
                                buffstr[i] = 'q';
                                i++;
-                               break;
-                       case 43:                                 \ (< for somekeyboards)
-                               kprintch((char)92);
-                               buffstr[i] = 'q';
-                               i++;
                                break;*/
+                       case 43:                                 // backslash (< for somekeyboards)
+                               kprintch((char)92);
+                               buffstr[i] = (char)92;
+                               i++;
+                               break;
                 case 44:
                     kprintch('z', 0x0F);
                     buffer[i] = 'z';
@@ -298,6 +297,6 @@ char* readStr()
             }
         }
     }
-    buffer[i] = 0;
+    buffer[++i] = '\0';
     return buffer;
 }
