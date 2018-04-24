@@ -1,14 +1,11 @@
-#include <string.h>
-#include <stdio.h>
 #include <stdbool.h>
-
+#include <stddef.h>
+#include <stdint.h>
 
 #include "inc/screen.h"
 #include "inc/screen.c"
 #include "inc/keyboard.h"
 #include "inc/keyboard.c"
-#include "inc/kstring.h"
-#include "inc/kstring.c"
 
 void kernel_main()
 {
@@ -23,14 +20,16 @@ void kernel_main()
         {
             termination = true;
             kprint("terminating", 0x0F);
-        }else if(kStrEql(command, "echo"))
+        }else if(kStrEql(command, "echoS"))
         {
             kprint("echo!", 0x05);
         }else
         {
-            kprint("Bad command", 0x04);
+            kprint("Bad command\n", 0x04);
+            kprint(command, 0x05);
         }
         if(termination)
             break;
+        *command = NULL;
     }
 }

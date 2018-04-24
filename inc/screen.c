@@ -1,7 +1,11 @@
 #include "screen.h"
 
-int axisX = 0, axisY = 0;
-const uint8 screenWidth = 80, screenHeight = 25, screenDepth = 2;
+axisX = 0;
+axisY = 0;
+
+screenWidth = 80;
+screenHeight = 25;
+screenDepth = 2;
 
 void clearLine(uint8 from, uint8 to)
 {
@@ -93,10 +97,16 @@ void kprintch (char c, uint8 color)
     updateCursor();
 }
 
-void kprint(char* ch, int color)
+void kprint(char* ch, uint8 color)
 {
     uint16 i = 0;
     for(i; i < kstrlen(ch); i++){
         kprintch(ch[i], color);
     }
+}
+
+void kprintln(char * string, uint8 color)
+{
+    kprint(string, color);
+    kprintch('\n', 0x00);
 }

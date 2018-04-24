@@ -17,14 +17,13 @@ uint16 kStrEql(char* origin, char* comparate)
 {
     uint8 result = 1;
     uint8 size = kstrlen(origin);
-    if(size != kstrlen(origin))
+    if(size != kstrlen(comparate))
     {
         result = 0;
     }
     else
     {
-        uint8 i = 0;
-        for(i; i <= size;i++)
+        for(uint8 i = 0; i <= size; i++)
         {
             if(origin[i] != comparate[i])
                 result = 0;
