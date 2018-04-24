@@ -1,3 +1,3 @@
 # pluto
-Simple OS
+Simple OS \n
 Feel free to contribute :-) 
