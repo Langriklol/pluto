@@ -8,12 +8,12 @@
 #include "kstring.h"
 #include "kstring.c"
 
-int axisX;
-int axisY;
+int axisX = 0;
+int axisY = 0;
 
-const uint8 screenWidth;
-const uint8 screenHeight;
-const uint8 screenDepth;
+const uint8 screenWidth = 80;
+const uint8 screenHeight = 25;
+const uint8 screenDepth = 2;
 
 void clearLine(uint8 from, uint8 to);
 

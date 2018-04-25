@@ -20,9 +20,9 @@ void kernel_main()
         {
             termination = true;
             kprint("terminating", 0x0F);
-        }else if(kStrEql(command, "echoS"))
+        }else if(kStrEql(command, "hw"))
         {
-            kprint("echo!", 0x05);
+            kprint("Hello world! I am Pluto command line!\n", 0x05);
         }else
         {
             kprint("Bad command\n", 0x04);
@@ -30,6 +30,7 @@ void kernel_main()
         }
         if(termination)
             break;
-        *command = NULL;
+        for(int i = 0; i < kstrlen(command); i++)
+            command[i] = 0;
     }
 }

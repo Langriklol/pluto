@@ -1,12 +1,5 @@
 #include "screen.h"
 
-axisX = 0;
-axisY = 0;
-
-screenWidth = 80;
-screenHeight = 25;
-screenDepth = 2;
-
 void clearLine(uint8 from, uint8 to)
 {
     uint16 i = screenWidth * from * screenDepth;

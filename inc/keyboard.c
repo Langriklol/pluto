@@ -145,7 +145,7 @@ char* readStr()
                     i++;
                     break;
                 case 28:
-                    //kprintch('\n', 0x0F);             //Enter
+                    kprintch('\n', 0x0F);             //Enter
                     //buffer[i] = '\n';
                     reading = 0;
                     break;
@@ -220,8 +220,8 @@ char* readStr()
                                i++;
                                break;*/
                        case 43:                                 // backslash (< for somekeyboards)
-                               kprintch((char)92);
-                               buffstr[i] = (char)92;
+                               kprintch((char)92, 0x0F);
+                               buffer[i] = (char)92;
                                i++;
                                break;
                 case 44:
