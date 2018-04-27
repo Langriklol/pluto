@@ -1,6 +1,6 @@
 
 # sudo apt-get install g++ binutils libc6-dev-i386
-# sudo apt-get install VirtualBox grub-legacy xorriso
+# sudo apt-get install qemu qemu-system-i386 grub-legacy xorriso
 
 GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings
 ASPARAMS = --32
@@ -21,6 +21,7 @@ objects = obj/loader.o \
           obj/drivers/mouse.o \
           obj/drivers/vga.o \
           obj/drivers/ata.o \
+					obj/drivers/driver.o \
           obj/gui/widget.o \
           obj/gui/window.o \
           obj/gui/desktop.o \
@@ -36,11 +37,35 @@ objects = obj/loader.o \
 run: pluto.iso
 	 qemu-system-i386 -kernel kernel.bin
 
-obj/%.o: src/%.cpp
+obj/%.o: core/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: src/%.s
+obj/%.o: drivers/%.cpp
+	mkdir -p $(@D)
+	gcc $(GCCPARAMS) -c -o $@ $<
+
+obj/%.o: gui/%.cpp
+	mkdir -p $(@D)
+	gcc $(GCCPARAMS) -c -o $@ $<
+
+obj/%.o: drivers/hw/%.cpp
+	mkdir -p $(@D)
+	gcc $(GCCPARAMS) -c -o $@ $<
+
+obj/%.o: drivers/hwcomm/%.cpp
+	mkdir -p $(@D)
+	gcc $(GCCPARAMS) -c -o $@ $<
+
+obj/%.o: drivers/net/%.cpp
+	mkdir -p $(@D)
+	gcc $(GCCPARAMS) -c -o $@ $<
+
+obj/%.o: drivers/hwcomm/%.s
+	mkdir -p $(@D)
+	as $(ASPARAMS) -o $@ $<
+
+obj/%.o: drivers/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 
