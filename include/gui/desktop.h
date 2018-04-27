@@ -10,7 +10,7 @@ namespace pluto
     namespace gui
     {
         
-        class Desktop : public CompositeWidget, public myos::drivers::MouseEventHandler
+        class Desktop : public CompositeWidget, public pluto::drivers::MouseEventHandler
         {
         protected:
             common::uint32_t MouseX;
@@ -23,8 +23,8 @@ namespace pluto
             
             void Draw(common::GraphicsContext* gc);
             
-            void OnMouseDown(myos::common::uint8_t button);
-            void OnMouseUp(myos::common::uint8_t button);
+            void OnMouseDown(pluto::common::uint8_t button);
+            void OnMouseUp(pluto::common::uint8_t button);
             void OnMouseMove(int x, int y);
         };
         
