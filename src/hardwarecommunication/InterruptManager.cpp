@@ -1,42 +1,6 @@
-
-
-#include <hardwarecommunication/interrupts.h>
-using namespace pluto::common;
-using namespace pluto::hardwarecommunication;
-
-
-void printf(char* str);
-void printfHex(uint8_t);
-
-
-
-
-
-InterruptHandler::InterruptHandler(InterruptManager* interruptManager, uint8_t InterruptNumber)
-{
-    this->InterruptNumber = InterruptNumber;
-    this->interruptManager = interruptManager;
-    interruptManager->handlers[InterruptNumber] = this;
-}
-
-InterruptHandler::~InterruptHandler()
-{
-    if(interruptManager->handlers[InterruptNumber] == this)
-        interruptManager->handlers[InterruptNumber] = 0;
-}
-
-uint32_t InterruptHandler::HandleInterrupt(uint32_t esp)
-{
-    return esp;
-}
-
-
-
-
-
-
-
-
+//
+// Created by lango on 4/27/18.
+//
 
 
 InterruptManager::GateDescriptor InterruptManager::interruptDescriptorTable[256];
@@ -46,7 +10,7 @@ InterruptManager* InterruptManager::ActiveInterruptManager = 0;
 
 
 void InterruptManager::SetInterruptDescriptorTableEntry(uint8_t interrupt,
-    uint16_t CodeSegment, void (*handler)(), uint8_t DescriptorPrivilegeLevel, uint8_t DescriptorType)
+                                                        uint16_t CodeSegment, void (*handler)(), uint8_t DescriptorPrivilegeLevel, uint8_t DescriptorType)
 {
     // address of pointer to code segment (relative to global descriptor table)
     // and address of the handler (relative to segment)
@@ -61,10 +25,10 @@ void InterruptManager::SetInterruptDescriptorTableEntry(uint8_t interrupt,
 
 
 InterruptManager::InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescriptorTable* globalDescriptorTable)
-    : programmableInterruptControllerMasterCommandPort(0x20),
-      programmableInterruptControllerMasterDataPort(0x21),
-      programmableInterruptControllerSlaveCommandPort(0xA0),
-      programmableInterruptControllerSlaveDataPort(0xA1)
+        : programmableInterruptControllerMasterCommandPort(0x20),
+          programmableInterruptControllerMasterDataPort(0x21),
+          programmableInterruptControllerSlaveCommandPort(0xA0),
+          programmableInterruptControllerSlaveDataPort(0xA1)
 {
     this->hardwareInterruptOffset = hardwareInterruptOffset;
     uint32_t CodeSegment = globalDescriptorTable->CodeSegmentSelector();
@@ -196,5 +160,4 @@ uint32_t InterruptManager::DoHandleInterrupt(uint8_t interrupt, uint32_t esp)
 
     return esp;
 }
-
 
