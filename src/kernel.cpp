@@ -32,6 +32,7 @@ using namespace pluto::drivers;
 using namespace pluto::hardwarecommunication;
 using namespace pluto::gui;
 using namespace pluto::net;
+using namespace pluto::filesystem;
 
 
 
