@@ -2,12 +2,21 @@
 Pluto is just a project to learn low-level programming.
 Feel free to contribute :)
 
-# How to install/boot it?
-Well, run makefile ("make pluto.iso") and let it compile. After that, you will see pluto.iso file in the folder. Open terminal and type: "dd if=pluto.iso of=/dev/sdX && sync" where X is your flash drive. For example, it's /dev/sdb, so you type /dev/sdb instead of /dev/sdX. If you don't know what is your flash drive location, open Disks app and you will see your flash drive here. Click on it, and you will see device location.
-After the command finishes, unplug flash drive, plug it into computer you want to boot Pluto on, (unless you want to try it on computer you're currently reading this on.) restart/start your computer, and press F8, F9, F12, ESC or DEL button. Go to Boot section and select that removable devices boot first. Save changes and restart computer (Press F10 or in Exit section, hit "Save changes & Exit"). Pluto will automatically start.
+## Installation / boot guide
+_Requires a bootable flash drive_
 
-# It cannot boot! What I have to do?
-Actually, Pluto is currently in develoing stage, so it has a lot of bugs. Just wait until new version appears here :)
-
-# What can I do with source code?
-Pluto is using GPPL 3.0 License, so read LICENSE file.
+ - Run makefile: ```make pluto.iso```, compilation may take some time
+ - After the process is finished _pluto.iso_ file will be present is the same folder
+ - Let DD restore a hdd from the image created in the first step: ```dd if=pluto.iso of=/dev/sdX && sync```
+   - _Note: replace **X** with name of your flash disk drive_  
+   - _This name can be easily obtained from the Disks app -> device location_
+ - Restart the computer
+ - While booting press F8/F9/F12/ESC/DEL and from the boot section select the plugged flash disk as a first option
+ - Save the changes and restart
+ - Pluto should now boot automatically
+ 
+ ## Splash bug?
+ Feel free to open an issue due to Pluto being in dev right now bugs may appear. Our team will resolve the issue asap, keep in mind there are no stable versions so far.
+ 
+ ## License
+ GPL 3.0 standard license. In detail [here](https://github.com/Langriklol/pluto/blob/master/LICENSE).
