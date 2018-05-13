@@ -1,0 +1,52 @@
+body {
+  display: flex;
+  flex-direction: column;
+  color: #000000;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  background: url("http://wallpapers.ae/wp-content/uploads/2014/10/Pluto-Planet-Wallpaper.jpg") no-repeat fixed;
+  background-size: contain;
+  max-width: 100vw; }
+  body div {
+    width: 100%;
+    height: 25%; }
+  body div#content {
+    display: inline-block;
+    background: transparent;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    padding: 15% 2% 15% 2%;
+    margin: 0;
+    max-width: 96%;
+    font-size: 2em; }
+  body header {
+    background: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.1em;
+    height: 5%;
+    padding: 0;
+    margin: 0; }
+    body header h1 {
+      margin: 0;
+      padding: 0;
+      text-align: center; }
+    body header img {
+      height: 1.7em;
+      text-align: right;
+      position: absolute;
+      right: .5%;
+      top: .5%; }
+  body section {
+    height: 95%;
+    background: white;
+    padding-left: 20%; }
+  body footer {
+    background: white;
+    text-align: center;
+    padding: 1%;
+    color: #969696;
+    font-size: .8em; }
+  body #description {
+    font-size: .9em; }

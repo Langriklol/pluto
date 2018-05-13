@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <title>Pluto | Open source operating system</title>
+</head>
+<body>
+    <header>
+        <h1>Pluto</h1>
+        <a href="https://github.com/langriklol/pluto"><img src="https://use.fontawesome.com/releases/v5.0.13/svgs/brands/github.svg" alt="github" /></a>
+    </header>
+    <div id="content">
+        <h2>Pluto - Your universal love</h2>
+        <strong id="description">Simply the best - Pluto the community open source OS written in C++. <br>
+        Feel free to contribute</strong>
+    </div>
+        <section>
+            <h2>Pluto</h2>
+            Pluto is just a project to learn low-level programming.
+            Feel free to contribute :)
+            <h3>Installation / boot guide</h3>
+            <i>Requires a bootable flash drive</i><br>
+            <ul>
+                <li>Run makefile: <b>make pluto.iso</b>, compilation may take some time</li>
+                <li>After the process is finished <b>pluto.iso</b> file will be present is the same folder</li>
+                <li>Let DD restore a hdd from the image created in the first step: <b>dd if=pluto.iso of=/dev/sdX && sync</b></li>
+                <li><i>Note: replace <b>X</b> with name of your flash disk drive</i></li>
+                <li><i>This name can be easily obtained from the Disks app -> device location</i></li>
+                <li>Restart the computer</li>
+                <li>While booting press F8/F9/F12/ESC/DEL and from the boot section select the plugged flash disk as a first option</li>
+                <li>Save the changes and restart</li>
+                <li>Pluto should now boot automatically</li>
+            </ul>
+            <h3>Splash bug?</h3>
+            Feel free to open an issue due to Pluto being in dev right now bugs may appear. Our team will resolve the issue asap, <br>
+            keep in mind there are no stable versions so far.
+
+            <h3>License</h3>
+            GPL 3.0 standard license. In detail <a href="https://github.com/Langriklol/pluto/blob/master/LICENSE">here</a>.
+        </section>
+    <footer>
+        <i>Made with <b>❤</b> by: Ondřej Langr and Jozef Nagy.</i>
+    </footer>
+</body>
+</html>
