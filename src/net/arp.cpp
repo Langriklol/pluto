@@ -1,4 +1,3 @@
-
 #include <net/arp.h>
 using namespace pluto;
 using namespace pluto::common;

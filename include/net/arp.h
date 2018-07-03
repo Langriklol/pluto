@@ -1,7 +1,5 @@
- 
 #ifndef __PLUTO__NET__ARP_H
 #define __PLUTO__NET__ARP_H
-
 
 #include <common/types.h>
 #include <net/etherframe.h>
