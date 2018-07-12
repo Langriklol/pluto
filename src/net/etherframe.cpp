@@ -1,5 +1,5 @@
- 
-#include <net/etherframe.h>
+
+#include "../../include/net/etherframe.h"
 using namespace pluto;
 using namespace pluto::common;
 using namespace pluto::net;
@@ -20,7 +20,7 @@ EtherFrameHandler::~EtherFrameHandler()
     if(backend->handlers[etherType_BE] == this)
         backend->handlers[etherType_BE] = 0;
 }
-            
+
 bool EtherFrameHandler::OnEtherFrameReceived(common::uint8_t* etherframePayload, common::uint32_t size)
 {
     return false;
@@ -38,7 +38,7 @@ uint32_t EtherFrameHandler::GetIPAddress()
 
 
 
-            
+
 EtherFrameProvider::EtherFrameProvider(amd_am79c973* backend)
 : RawDataHandler(backend)
 {
@@ -54,10 +54,10 @@ bool EtherFrameProvider::OnRawDataReceived(common::uint8_t* buffer, common::uint
 {
     if(size < sizeof(EtherFrameHeader))
         return false;
-    
+
     EtherFrameHeader* frame = (EtherFrameHeader*)buffer;
     bool sendBack = false;
-    
+
     if(frame->dstMAC_BE == 0xFFFFFFFFFFFF
     || frame->dstMAC_BE == backend->GetMACAddress())
     {
@@ -65,13 +65,13 @@ bool EtherFrameProvider::OnRawDataReceived(common::uint8_t* buffer, common::uint
             sendBack = handlers[frame->etherType_BE]->OnEtherFrameReceived(
                 buffer + sizeof(EtherFrameHeader), size - sizeof(EtherFrameHeader));
     }
-    
+
     if(sendBack)
     {
         frame->dstMAC_BE = frame->srcMAC_BE;
         frame->srcMAC_BE = backend->GetMACAddress();
     }
-    
+
     return sendBack;
 }
 
@@ -79,18 +79,18 @@ void EtherFrameProvider::Send(common::uint64_t dstMAC_BE, common::uint16_t ether
 {
     uint8_t* buffer2 = (uint8_t*)MemoryManager::activeMemoryManager->malloc(sizeof(EtherFrameHeader) + size);
     EtherFrameHeader* frame = (EtherFrameHeader*)buffer2;
-    
+
     frame->dstMAC_BE = dstMAC_BE;
     frame->srcMAC_BE = backend->GetMACAddress();
     frame->etherType_BE = etherType_BE;
-    
+
     uint8_t* src = buffer;
     uint8_t* dst = buffer2 + sizeof(EtherFrameHeader);
     for(uint32_t i = 0; i < size; i++)
         dst[i] = src[i];
-    
+
     backend->Send(buffer2, size + sizeof(EtherFrameHeader));
-    
+
     MemoryManager::activeMemoryManager->free(buffer2);
 }
 

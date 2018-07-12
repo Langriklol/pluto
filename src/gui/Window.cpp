@@ -1,4 +1,4 @@
-#include <gui/Window.h>
+#include "../../include/gui/Window.h"
 using namespace pluto::gui;
 
 int Window::getX()

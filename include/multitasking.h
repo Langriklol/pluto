@@ -1,13 +1,13 @@
- 
+
 #ifndef __PLUTO__MULTITASKING_H
 #define __PLUTO__MULTITASKING_H
 
-#include <common/types.h>
-#include <gdt.h>
+#include "common/types.h"
+#include "gdt.h"
 
 namespace pluto
 {
-    
+
     struct CPUState
     {
         common::uint32_t eax;
@@ -31,10 +31,10 @@ namespace pluto
         common::uint32_t cs;
         common::uint32_t eflags;
         common::uint32_t esp;
-        common::uint32_t ss;        
+        common::uint32_t ss;
     } __attribute__((packed));
-    
-    
+
+
     class Task
     {
     friend class TaskManager;
@@ -45,8 +45,8 @@ namespace pluto
         Task(GlobalDescriptorTable *gdt, void entrypoint());
         ~Task();
     };
-    
-    
+
+
     class TaskManager
     {
     private:
@@ -59,9 +59,9 @@ namespace pluto
         bool AddTask(Task* task);
         CPUState* Schedule(CPUState* cpustate);
     };
-    
-    
-    
+
+
+
 }
 
 

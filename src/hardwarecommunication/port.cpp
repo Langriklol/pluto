@@ -1,5 +1,5 @@
 
-#include <hardwarecommunication/port.h>
+#include "../../include/hardwarecommunication/port.h"
 using namespace pluto::common;
 using namespace pluto::hardwarecommunication;
 
@@ -99,4 +99,3 @@ uint32_t Port32Bit::Read()
 {
     return Read32(portnumber);
 }
-

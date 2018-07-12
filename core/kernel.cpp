@@ -1,26 +1,26 @@
 
-#include <common/types.h>
-#include <gdt.h>
-#include <memorymanagement.h>
-#include <hardwarecommunication/interrupts.h>
-#include <syscalls.h>
-#include <hardwarecommunication/pci.h>
-#include <drivers/driver.h>
-#include <drivers/keyboard.h>
-#include <drivers/mouse.h>
-#include <drivers/vga.h>
-#include <drivers/ata.h>
-#include <gui/desktop.h>
-#include <gui/window.h>
-#include <multitasking.h>
+#include "../include/common/types.h"
+#include "../include/gdt.h"
+#include "../include/memorymanagement.h"
+#include "../include/hardwarecommunication/interrupts.h"
+#include "../include/syscalls.h"
+#include "../include/hardwarecommunication/pci.h"
+#include "../include/drivers/driver.h"
+#include "../include/drivers/keyboard.h"
+#include "../include/drivers/mouse.h"
+#include "../include/drivers/vga.h"
+#include "../include/drivers/ata.h"
+#include "../include/gui/desktop.h"
+#include "../include/gui/window.h"
+#include "../include/multitasking.h"
 
-#include <drivers/amd_am79c973.h>
-#include <net/etherframe.h>
-#include <net/arp.h>
-#include <net/ipv4.h>
-#include <net/icmp.h>
-#include <net/udp.h>
-#include <net/tcp.h>
+#include "../include/drivers/amd_am79c973.h"
+#include "../include/net/etherframe.h"
+#include "../include/net/arp.h"
+#include "../include/net/ipv4.h"
+#include "../include/net/icmp.h"
+#include "../include/net/udp.h"
+#include "../include/net/tcp.h"
 
 
 // #define GRAPHICSMODE
@@ -112,7 +112,7 @@ class MouseToConsole : public MouseEventHandler
 {
     int8_t x, y;
 public:
-    
+
     MouseToConsole()
     {
         uint16_t* VideoMemory = (uint16_t*)0xb8000;
@@ -120,9 +120,9 @@ public:
         y = 12;
         VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0x0F00) << 4
                             | (VideoMemory[80*y+x] & 0xF000) >> 4
-                            | (VideoMemory[80*y+x] & 0x00FF);        
+                            | (VideoMemory[80*y+x] & 0x00FF);
     }
-    
+
     virtual void OnMouseMove(int xoffset, int yoffset)
     {
         static uint16_t* VideoMemory = (uint16_t*)0xb8000;
@@ -141,7 +141,7 @@ public:
                             | (VideoMemory[80*y+x] & 0xF000) >> 4
                             | (VideoMemory[80*y+x] & 0x00FF);
     }
-    
+
 };
 
 class PrintfUDPHandler : public UserDatagramProtocolHandler
@@ -170,9 +170,9 @@ public:
             foo[0] = data[i];
             printf(foo);
         }
-        
-        
-        
+
+
+
         if(size > 9
             && data[0] == 'G'
             && data[1] == 'E'
@@ -189,8 +189,8 @@ public:
             socket->Send((uint8_t*)"HTTP/1.1 200 OK\r\nServer: PlutoOSr\nContent-Type: text/html\r\n\r\n<html><head><title>PLUTO SYSTEM</title></head><body><b>Pluto v. 0.1</b>GPPL v. 3.0 | This software uses GPPL License | This software uses GRUB (Licensed under GPPL License)</body></html>\r\n",184);
             socket->Disconnect();
         }
-        
-        
+
+
         return true;
     }
 };
@@ -234,18 +234,18 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     printf("PLUTO BOOTED SUCCESSFULLY!\n");
 
     GlobalDescriptorTable gdt;
-    
-    
+
+
     uint32_t* memupper = (uint32_t*)(((size_t)multiboot_structure) + 8);
     size_t heap = 10*1024*1024;
     MemoryManager memoryManager(heap, (*memupper)*1024 - heap - 10*1024);
-    
+
     printf("heap: 0x");
     printfHex((heap >> 24) & 0xFF);
     printfHex((heap >> 16) & 0xFF);
     printfHex((heap >> 8 ) & 0xFF);
     printfHex((heap      ) & 0xFF);
-    
+
     void* allocated = memoryManager.malloc(1024);
     printf("\nallocated: 0x");
     printfHex(((size_t)allocated >> 24) & 0xFF);
@@ -253,7 +253,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     printfHex(((size_t)allocated >> 8 ) & 0xFF);
     printfHex(((size_t)allocated      ) & 0xFF);
     printf("\n");
-    
+
     TaskManager taskManager;
     /*
     Task task1(&gdt, taskA);
@@ -261,18 +261,18 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     taskManager.AddTask(&task1);
     taskManager.AddTask(&task2);
     */
-    
+
     InterruptManager interrupts(0x20, &gdt, &taskManager);
     SyscallHandler syscalls(&interrupts, 0x80);
-    
+
     printf("[INFO]: Initializing hardware (STAGE 1)... ");
-    
+
     #ifdef GRAPHICSMODE
         Desktop desktop(320,200, 0x00,0x00,0xA8);
     #endif
-    
+
     DriverManager drvManager;
-    
+
         #ifdef GRAPHICSMODE
             KeyboardDriver keyboard(&interrupts, &desktop);
         #else
@@ -280,8 +280,8 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
             KeyboardDriver keyboard(&interrupts, &kbhandler);
         #endif
         drvManager.AddDriver(&keyboard);
-        
-    
+
+
         #ifdef GRAPHICSMODE
             MouseDriver mouse(&interrupts, &desktop);
         #else
@@ -289,7 +289,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
             MouseDriver mouse(&interrupts, &mousehandler);
         #endif
         drvManager.AddDriver(&mouse);
-        
+
         PeripheralComponentInterconnectController PCIController;
         PCIController.SelectDrivers(&drvManager, &interrupts);
 
@@ -297,11 +297,11 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
             VideoGraphicsArray vga;
         #endif
 	printf("DONE!\n");
-        
+
    	printf("[INFO]: Initializing hardware (STAGE 2)... ");
         drvManager.ActivateAll();
 	printf("DONE!\n");
-        
+
     printf("[INFO]: Initializing hardware (STAGE 3)... ");
 
     #ifdef GRAPHICSMODE
@@ -317,27 +317,27 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     printf("\nS-ATA primary master: ");
     AdvancedTechnologyAttachment ata0m(true, 0x1F0);
     ata0m.Identify();
-    
+
     printf("\nS-ATA primary slave: ");
     AdvancedTechnologyAttachment ata0s(false, 0x1F0);
     ata0s.Identify();
     ata0s.Write28(0, (uint8_t*)"PLUTO - Testing OS for learning Low-Level programming", 25);
     ata0s.Flush();
     ata0s.Read28(0, 25);
-    
+
     printf("\nS-ATA secondary master: ");
     AdvancedTechnologyAttachment ata1m(true, 0x170);
     ata1m.Identify();
-    
+
     printf("\nS-ATA secondary slave: ");
     AdvancedTechnologyAttachment ata1s(false, 0x170);
     ata1s.Identify();
     // third: 0x1E8
     // fourth: 0x168
   	*/
-                   
+
     amd_am79c973* eth0 = (amd_am79c973*)(drvManager.drivers[2]);
-    
+
     // IP Address
     uint8_t ip1 = 10, ip2 = 0, ip3 = 2, ip4 = 15;
     uint32_t ip_be = ((uint32_t)ip4 << 24)
@@ -346,52 +346,52 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
                 | (uint32_t)ip1;
     eth0->SetIPAddress(ip_be);
     EtherFrameProvider etherframe(eth0);
-    AddressResolutionProtocol arp(&etherframe);    
+    AddressResolutionProtocol arp(&etherframe);
 	printf("[INFO]: IP Address saved!");
-    
+
     // IP Address of the default gateway
     uint8_t gip1 = 10, gip2 = 0, gip3 = 2, gip4 = 2;
     uint32_t gip_be = ((uint32_t)gip4 << 24)
                    | ((uint32_t)gip3 << 16)
                    | ((uint32_t)gip2 << 8)
                    | (uint32_t)gip1;
-    
+
     uint8_t subnet1 = 255, subnet2 = 255, subnet3 = 255, subnet4 = 0;
     uint32_t subnet_be = ((uint32_t)subnet4 << 24)
                    | ((uint32_t)subnet3 << 16)
                    | ((uint32_t)subnet2 << 8)
                    | (uint32_t)subnet1;
-                   
+
     InternetProtocolProvider ipv4(&etherframe, &arp, gip_be, subnet_be);
     InternetControlMessageProtocol icmp(&ipv4);
     UserDatagramProtocolProvider udp(&ipv4);
     TransmissionControlProtocolProvider tcp(&ipv4);
 	printf("[INFO]: IP Address of default gateway saved!");
-	  
+
     interrupts.Activate();
 
     printf("[INFO]: Interrupts are active!");
-    
+
     arp.BroadcastMACAddress(gip_be);
-    
-    
+
+
     PrintfTCPHandler tcphandler;
     TransmissionControlProtocolSocket* tcpsocket = tcp.Listen(1234);
     tcp.Bind(tcpsocket, &tcphandler);
     //tcpsocket->Send((uint8_t*)"Hello TCP!", 10);
 
-    
+
     //icmp.RequestEchoReply(gip_be);
-    
+
     //PrintfUDPHandler udphandler;
     //UserDatagramProtocolSocket* udpsocket = udp.Connect(gip_be, 1234);
     //udp.Bind(udpsocket, &udphandler);
     //udpsocket->Send((uint8_t*)"Hello UDP!", 10);
-    
+
     //UserDatagramProtocolSocket* udpsocket = udp.Listen(1234);
     //udp.Bind(udpsocket, &udphandler);
 
-    
+
     while(1)
     {
         #ifdef GRAPHICSMODE

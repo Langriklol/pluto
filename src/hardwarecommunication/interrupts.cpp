@@ -1,6 +1,6 @@
 
 
-#include <hardwarecommunication/interrupts.h>
+#include "../../include/hardwarecommunication/interrupts.h"
 using namespace pluto::common;
 using namespace pluto::hardwarecommunication;
 
@@ -29,7 +29,3 @@ uint32_t InterruptHandler::HandleInterrupt(uint32_t esp)
 {
     return esp;
 }
-
-
-
-

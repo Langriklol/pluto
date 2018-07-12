@@ -5,9 +5,9 @@
 #ifndef PLUTO_INTERRUPTMANAGER_H
 #define PLUTO_INTERRUPTMANAGER_H
 
-#include <gdt.h>
-#include <common/types.h>
-#include <hardwarecommunication/port.h>
+#include "../../gdt.h"
+#include "../../common/types.h"
+#include "../../hardwarecommunication/port.h"
 
 namespace pluto
 {

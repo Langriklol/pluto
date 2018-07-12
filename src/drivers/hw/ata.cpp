@@ -1,4 +1,4 @@
-#include <drivers/ata.h>
+#include "../../../drivers/ata.h"
 
 using namespace pluto;
 using namespace pluto::common;
@@ -25,40 +25,40 @@ AdvancedTechnologyAttachment::AdvancedTechnologyAttachment(bool master, common::
 AdvancedTechnologyAttachment::~AdvancedTechnologyAttachment()
 {
 }
-            
+
 void AdvancedTechnologyAttachment::Identify()
 {
     devicePort.Write(master ? 0xA0 : 0xB0);
     controlPort.Write(0);
-    
+
     devicePort.Write(0xA0);
     uint8_t status = commandPort.Read();
     if(status == 0xFF)
         return;
-    
-    
+
+
     devicePort.Write(master ? 0xA0 : 0xB0);
     sectorCountPort.Write(0);
     lbaLowPort.Write(0);
     lbaMidPort.Write(0);
     lbaHiPort.Write(0);
     commandPort.Write(0xEC); // identify command
-    
-    
+
+
     status = commandPort.Read();
     if(status == 0x00)
         return;
-    
+
     while(((status & 0x80) == 0x80)
        && ((status & 0x01) != 0x01))
         status = commandPort.Read();
-        
+
     if(status & 0x01)
     {
         printf("ERROR");
         return;
     }
-    
+
     for(int i = 0; i < 256; i++)
     {
         uint16_t data = dataPort.Read();
@@ -74,7 +74,7 @@ void AdvancedTechnologyAttachment::Read28(common::uint32_t sectorNum, int count)
 {
     if(sectorNum > 0x0FFFFFFF)
         return;
-    
+
     devicePort.Write( (master ? 0xE0 : 0xF0) | ((sectorNum & 0x0F000000) >> 24) );
     errorPort.Write(0);
     sectorCountPort.Write(1);
@@ -82,36 +82,36 @@ void AdvancedTechnologyAttachment::Read28(common::uint32_t sectorNum, int count)
     lbaMidPort.Write( (sectorNum & 0x0000FF00) >> 8);
     lbaLowPort.Write( (sectorNum & 0x00FF0000) >> 16 );
     commandPort.Write(0x20);
-    
+
     uint8_t status = commandPort.Read();
     while(((status & 0x80) == 0x80)
        && ((status & 0x01) != 0x01))
         status = commandPort.Read();
-        
+
     if(status & 0x01)
     {
         printf("ERROR");
         return;
     }
-    
-    
+
+
     printf("Reading ATA Drive: ");
-    
+
     for(int i = 0; i < count; i += 2)
     {
         uint16_t wdata = dataPort.Read();
-        
+
         char *text = "  \0";
         text[0] = wdata & 0xFF;
-        
+
         if(i+1 < count)
             text[1] = (wdata >> 8) & 0xFF;
         else
             text[1] = '\0';
-        
+
         printf(text);
-    }    
-    
+    }
+
     for(int i = count + (count%2); i < 512; i += 2)
         dataPort.Read();
 }
@@ -122,8 +122,8 @@ void AdvancedTechnologyAttachment::Write28(common::uint32_t sectorNum, common::u
         return;
     if(count > 512)
         return;
-    
-    
+
+
     devicePort.Write( (master ? 0xE0 : 0xF0) | ((sectorNum & 0x0F000000) >> 24) );
     errorPort.Write(0);
     sectorCountPort.Write(1);
@@ -131,8 +131,8 @@ void AdvancedTechnologyAttachment::Write28(common::uint32_t sectorNum, common::u
     lbaMidPort.Write( (sectorNum & 0x0000FF00) >> 8);
     lbaLowPort.Write( (sectorNum & 0x00FF0000) >> 16 );
     commandPort.Write(0x30);
-    
-    
+
+
     printf("Writing to ATA Drive: ");
 
     for(int i = 0; i < count; i += 2)
@@ -141,13 +141,13 @@ void AdvancedTechnologyAttachment::Write28(common::uint32_t sectorNum, common::u
         if(i+1 < count)
             wdata |= ((uint16_t)data[i+1]) << 8;
         dataPort.Write(wdata);
-        
+
         char *text = "  \0";
         text[0] = (wdata >> 8) & 0xFF;
         text[1] = wdata & 0xFF;
         printf(text);
     }
-    
+
     for(int i = count + (count%2); i < 512; i += 2)
         dataPort.Write(0x0000);
 
@@ -161,15 +161,14 @@ void AdvancedTechnologyAttachment::Flush()
     uint8_t status = commandPort.Read();
     if(status == 0x00)
         return;
-    
+
     while(((status & 0x80) == 0x80)
        && ((status & 0x01) != 0x01))
         status = commandPort.Read();
-        
+
     if(status & 0x01)
     {
         printf("ERROR");
         return;
     }
 }
-            

@@ -1,6 +1,6 @@
 
 
-#include <hardwarecommunication/interrupts.h>
+#include "../../../hardwarecommunication/interrupts.h"
 using namespace pluto::common;
 using namespace pluto::hardwarecommunication;
 

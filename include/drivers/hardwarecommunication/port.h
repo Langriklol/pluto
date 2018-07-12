@@ -2,7 +2,7 @@
 #ifndef __PLUTO__HARDWARECOMMUNICATION__PORT_H
 #define __PLUTO__HARDWARECOMMUNICATION__PORT_H
 
-#include <common/types.h>
+#include "../../common/types.h"
 
 namespace pluto
 {
@@ -18,7 +18,7 @@ namespace pluto
                 pluto::common::uint16_t portnumber;
         };
 
-        
+
         class Port8Bit : public Port
         {
             public:

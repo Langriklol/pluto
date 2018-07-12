@@ -2,9 +2,9 @@
 #ifndef __PLUTO__HARDWARECOMMUNICATION__INTERRUPTMANAGER_H
 #define __PLUTO__HARDWARECOMMUNICATION__INTERRUPTMANAGER_H
 
-#include <gdt.h>
-#include <common/types.h>
-#include <hardwarecommunication/port.h>
+#include "../../gdt.h"
+#include "../../common/types.h"
+#include "../../hardwarecommunication/port.h"
 
 
 namespace pluto

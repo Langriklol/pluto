@@ -37,39 +37,48 @@ objects = obj/loader.o \
 run: pluto.iso
 	 qemu-system-i386 -kernel kernel.bin
 
-obj/%.o: core/%.cpp
+obj/%.o: ../core/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: drivers/%.cpp
+obj/%.o: ../src/drivers/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: gui/%.cpp
+obj/%.o: ../src/gui/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: drivers/hw/%.cpp
+obj/%.o: ../src/drivers/hw/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: drivers/hwcomm/%.cpp
+obj/%.o: ../src/drivers/hwcomm/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: drivers/net/%.cpp
+obj/%.o: ../src/drivers/net/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: drivers/hwcomm/%.s
+
+ob/%.o: ../src/%.cpp
+	mkdir -p $(@Đ)
+	gcc $(GCCPARAMS) -c -o $@ $<
+
+obj/%.o: ../src/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 
-obj/%.o: drivers/%.s
+obj/%.o: ../src/drivers/hwcomm/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 
-kernel.bin: linker.ld $(objects)
+obj/%.o: ../src/drivers/%.s
+	mkdir -p $(@D)
+	as $(ASPARAMS) -o $@ $<
+
+kernel.bin: ../linker.ld $(objects)
 	ld $(LDPARAMS) -T $< -o $@ $(objects)
 
 pluto.iso: kernel.bin
@@ -85,6 +94,7 @@ pluto.iso: kernel.bin
 	echo '  boot'                            >> iso/boot/grub/grub.cfg
 	echo '}'                                 >> iso/boot/grub/grub.cfg
 	grub-mkrescue --output=pluto.iso
+
 install: kernel.bin
 	sudo cp $< /boot/kernel.bin
 

@@ -1,16 +1,16 @@
- 
+
 #ifndef __PLUTO__DRIVERS__ATA_H
 #define __PLUTO__DRIVERS__ATA_H
 
-#include <common/types.h>
-#include <hardwarecommunication/interrupts.h>
-#include <hardwarecommunication/port.h>
+#include "../../common/types.h"
+#include "../../hardwarecommunication/interrupts.h"
+#include "../../hardwarecommunication/port.h"
 
 namespace pluto
 {
     namespace drivers
     {
-        
+
         class AdvancedTechnologyAttachment
         {
         protected:
@@ -25,18 +25,18 @@ namespace pluto
             hardwarecommunication::Port8Bit commandPort;
             hardwarecommunication::Port8Bit controlPort;
         public:
-            
+
             AdvancedTechnologyAttachment(bool master, common::uint16_t portBase);
             ~AdvancedTechnologyAttachment();
-            
+
             void Identify();
             void Read28(common::uint32_t sectorNum, int count = 512);
             void Write28(common::uint32_t sectorNum, common::uint8_t* data, common::uint32_t count);
             void Flush();
-            
-            
+
+
         };
-        
+
     }
 }
 

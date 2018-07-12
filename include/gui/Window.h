@@ -1,7 +1,7 @@
 #ifndef PLUTO_GUI_WINDOW
 #define PLUTO_GUI_WINDOW
-#include <common/types.h>
-#include <multitasking.h>
+#include "../common/types.h"
+#include "../multitasking.h"
 namespace pluto
 {
     namespace gui

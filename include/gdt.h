@@ -1,11 +1,11 @@
 #ifndef __PLUTO__GDT_H
 #define __PLUTO__GDT_H
 
-#include <common/types.h>
+#include "common/types.h"
 
 namespace pluto
 {
-    
+
     class GlobalDescriptorTable
     {
         public:
@@ -42,5 +42,5 @@ namespace pluto
     };
 
 }
-    
+
 #endif

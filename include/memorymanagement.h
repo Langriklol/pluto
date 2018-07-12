@@ -1,13 +1,13 @@
- 
+
 #ifndef __PLUTO__MEMORYMANAGEMENT_H
 #define __PLUTO__MEMORYMANAGEMENT_H
 
-#include <common/types.h>
+#include "common/types.h"
 
 
 namespace pluto
 {
-    
+
     struct MemoryChunk
     {
         MemoryChunk *next;
@@ -15,20 +15,20 @@ namespace pluto
         bool allocated;
         common::size_t size;
     };
-    
-    
+
+
     class MemoryManager
     {
-        
+
     protected:
         MemoryChunk* first;
     public:
-        
+
         static MemoryManager *activeMemoryManager;
-        
+
         MemoryManager(common::size_t first, common::size_t size);
         ~MemoryManager();
-        
+
         void* malloc(common::size_t size);
         void free(void* ptr);
     };

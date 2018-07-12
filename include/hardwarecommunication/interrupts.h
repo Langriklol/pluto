@@ -2,10 +2,10 @@
 #ifndef __PLUTO__HARDWARECOMMUNICATION__INTERRUPTMANAGER_H
 #define __PLUTO__HARDWARECOMMUNICATION__INTERRUPTMANAGER_H
 
-#include <gdt.h>
-#include <multitasking.h>
-#include <common/types.h>
-#include <hardwarecommunication/port.h>
+#include "../gdt.h"
+#include "../multitasking.h"
+#include "../common/types.h"
+#include "../hardwarecommunication/port.h"
 
 
 namespace pluto
@@ -101,7 +101,7 @@ namespace pluto
                 static void HandleException0x11();
                 static void HandleException0x12();
                 static void HandleException0x13();
-                
+
                 static pluto::common::uint32_t HandleInterrupt(pluto::common::uint8_t interrupt, pluto::common::uint32_t esp);
                 pluto::common::uint32_t DoHandleInterrupt(pluto::common::uint8_t interrupt, pluto::common::uint32_t esp);
 
@@ -117,7 +117,7 @@ namespace pluto
                 void Activate();
                 void Deactivate();
         };
-        
+
     }
 }
 

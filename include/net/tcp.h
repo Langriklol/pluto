@@ -2,35 +2,35 @@
 #define __PLUTO__NET__TCP_H
 
 
-#include <common/types.h>
-#include <net/ipv4.h>
-#include <memorymanagement.h>
+#include "../common/types.h"
+#include "../net/ipv4.h"
+#include "../memorymanagement.h"
 
 
 namespace pluto
 {
     namespace net
     {
-        
-        
+
+
         enum TransmissionControlProtocolSocketState
         {
             CLOSED,
             LISTEN,
             SYN_SENT,
             SYN_RECEIVED,
-            
+
             ESTABLISHED,
-            
+
             FIN_WAIT1,
             FIN_WAIT2,
             CLOSING,
             TIME_WAIT,
-            
+
             CLOSE_WAIT
             //LAST_ACK
         };
-        
+
         enum TransmissionControlProtocolFlag
         {
             FIN = 1,
@@ -43,27 +43,27 @@ namespace pluto
             CWR = 128,
             NS = 256
         };
-        
-        
+
+
         struct TransmissionControlProtocolHeader
         {
             common::uint16_t srcPort;
             common::uint16_t dstPort;
             common::uint32_t sequenceNumber;
             common::uint32_t acknowledgementNumber;
-            
+
             common::uint8_t reserved : 4;
             common::uint8_t headerSize32 : 4;
             common::uint8_t flags;
-            
+
             common::uint16_t windowSize;
             common::uint16_t checksum;
             common::uint16_t urgentPtr;
-            
+
             common::uint32_t options;
         } __attribute__((packed));
-       
-      
+
+
         struct TransmissionControlProtocolPseudoHeader
         {
             common::uint32_t srcIP;
@@ -71,13 +71,13 @@ namespace pluto
             common::uint16_t protocol;
             common::uint16_t totalLength;
         } __attribute__((packed));
-      
-      
+
+
         class TransmissionControlProtocolSocket;
         class TransmissionControlProtocolProvider;
-        
-        
-        
+
+
+
         class TransmissionControlProtocolHandler
         {
         public:
@@ -85,9 +85,9 @@ namespace pluto
             ~TransmissionControlProtocolHandler();
             virtual bool HandleTransmissionControlProtocolMessage(TransmissionControlProtocolSocket* socket, common::uint8_t* data, common::uint16_t size);
         };
-      
-        
-      
+
+
+
         class TransmissionControlProtocolSocket
         {
         friend class TransmissionControlProtocolProvider;
@@ -101,7 +101,7 @@ namespace pluto
 
             TransmissionControlProtocolProvider* backend;
             TransmissionControlProtocolHandler* handler;
-            
+
             TransmissionControlProtocolSocketState state;
         public:
             TransmissionControlProtocolSocket(TransmissionControlProtocolProvider* backend);
@@ -110,19 +110,19 @@ namespace pluto
             virtual void Send(common::uint8_t* data, common::uint16_t size);
             virtual void Disconnect();
         };
-      
-      
+
+
         class TransmissionControlProtocolProvider : InternetProtocolHandler
         {
         protected:
             TransmissionControlProtocolSocket* sockets[65535];
             common::uint16_t numSockets;
             common::uint16_t freePort;
-            
+
         public:
             TransmissionControlProtocolProvider(InternetProtocolProvider* backend);
             ~TransmissionControlProtocolProvider();
-            
+
             virtual bool OnInternetProtocolReceived(common::uint32_t srcIP_BE, common::uint32_t dstIP_BE,
                                                     common::uint8_t* internetprotocolPayload, common::uint32_t size);
 
@@ -134,10 +134,10 @@ namespace pluto
             virtual TransmissionControlProtocolSocket* Listen(common::uint16_t port);
             virtual void Bind(TransmissionControlProtocolSocket* socket, TransmissionControlProtocolHandler* handler);
         };
-        
-        
-        
-        
+
+
+
+
     }
 }
 
