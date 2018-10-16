@@ -21,7 +21,7 @@ objects = obj/loader.o \
           obj/drivers/mouse.o \
           obj/drivers/vga.o \
           obj/drivers/ata.o \
-					obj/drivers/driver.o \
+		  obj/drivers/driver.o \
           obj/gui/widget.o \
           obj/gui/window.o \
           obj/gui/desktop.o \
