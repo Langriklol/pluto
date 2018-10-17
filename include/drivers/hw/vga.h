@@ -5,7 +5,7 @@
 
 #include "../../common/types.h"
 #include "../../hardwarecommunication/port.h"
-#include "../../drivers/driver.h"
+#include "driver.h"
 
 namespace pluto
 {

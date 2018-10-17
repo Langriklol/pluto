@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="false">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ab8f9fb4-693b-4c7c-8e4d-e00c4f92b4a3" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/obj/gdt.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/obj/loader.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/obj/memorymanagement.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/kernel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/core/kernel.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/drivers/hw/amd_am79c973.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/drivers/hw/amd_am79c973.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/drivers/hw/keyboard.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/drivers/hw/keyboard.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/drivers/hw/mouse.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/drivers/hw/mouse.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/drivers/hw/vga.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/drivers/hw/vga.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/drivers/net/etherframe.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/drivers/net/etherframe.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/hardwarecommunication/pci.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/hardwarecommunication/pci.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/net/etherframe.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/net/etherframe.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loader.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/loader.s" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="loader.s" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/loader.s">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gdt.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gdt.cpp">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="gdt.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/drivers/gdt.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pci.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/hardwarecommunication/pci.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kernel.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/kernel.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="213" column="16" lean-forward="true" selection-start-line="213" selection-start-column="16" selection-end-line="213" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#526#562#0" expanded="true" />
+                <element signature="e#1011#1763#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="types.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/common/types.h">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="keyboard.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/drivers/hw/keyboard.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
+              <folding>
+                <element signature="e#76#107#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>KeyboardEventHandler</find>
+      <find>TaskManager</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/gdt.cpp" />
+        <option value="$PROJECT_DIR$/src/drivers/gdt.cpp" />
+        <option value="$PROJECT_DIR$/src/loader.s" />
+        <option value="$PROJECT_DIR$/cmake-build-debug/makefile" />
+        <option value="$PROJECT_DIR$/include/hardwarecommunication/pci.h" />
+        <option value="$PROJECT_DIR$/include/drivers/hw/vga.h" />
+        <option value="$PROJECT_DIR$/include/drivers/hw/amd_am79c973.h" />
+        <option value="$PROJECT_DIR$/include/drivers/net/etherframe.h" />
+        <option value="$PROJECT_DIR$/include/net/etherframe.h" />
+        <option value="$PROJECT_DIR$/include/drivers/hw/keyboard.h" />
+        <option value="$PROJECT_DIR$/include/drivers/hw/mouse.h" />
+        <option value="$PROJECT_DIR$/core/kernel.cpp" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="27" />
+    <option name="width" value="1920" />
+    <option name="height" value="1053" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="pluto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pluto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pluto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pluto" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pluto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pluto" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pluto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pluto" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pluto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pluto" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="drivers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pluto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pluto" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="drivers" type="462c0819:PsiDirectoryNode" />
+              <item name="hw" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pluto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pluto" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="net" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pluto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pluto" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pluto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pluto" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="drivers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pluto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pluto" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="drivers" type="462c0819:PsiDirectoryNode" />
+              <item name="hwcommunication" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab8f9fb4-693b-4c7c-8e4d-e00c4f92b4a3" name="Default" comment="" />
+      <created>1539704910991</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539704910991</updated>
+      <workItem from="1539704912923" duration="4771000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4771000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/gdt.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/drivers/gdt.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/linker.ld">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/loader.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/drivers/hwcommunication/pci.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/hardwarecommunication/pci.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/gdt.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/drivers/hw/vga.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/drivers/hw/amd_am79c973.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/net/etherframe.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/drivers/net/etherframe.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/drivers/hw/keyboard.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
+          <folding>
+            <element signature="e#76#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/common/types.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/drivers/hw/mouse.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#70#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/multitasking.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/kernel.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="213" column="16" lean-forward="true" selection-start-line="213" selection-start-column="16" selection-end-line="213" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#526#562#0" expanded="true" />
+            <element signature="e#1011#1763#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

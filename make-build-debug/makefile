@@ -1,4 +1,3 @@
-
 # sudo apt-get install g++ binutils libc6-dev-i386
 # sudo apt-get install qemu qemu-system-i386 grub-legacy xorriso
 
@@ -6,11 +5,12 @@ GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti 
 ASPARAMS = --32
 LDPARAMS = -melf_i386
 
-objects = obj/loader.o \
+objects = obj/kernel.o \
+          obj/loader.o \
           obj/gdt.o \
           obj/memorymanagement.o \
-          obj/drivers/driver.o \
-          obj/hardwarecommunication/port.o \
+          #obj/drivers/driver.o \
+          #obj/hardwarecommunication/port.o \
           obj/hardwarecommunication/interruptstubs.o \
           obj/hardwarecommunication/interrupts.o \
           obj/syscalls.o \
@@ -29,9 +29,7 @@ objects = obj/loader.o \
           obj/net/ipv4.o \
           obj/net/icmp.o \
           obj/net/udp.o \
-          obj/net/tcp.o \
-          obj/kernel.o
-
+          obj/net/tcp.o
 
 run: pluto.iso
 	 qemu-system-i386 -kernel kernel.bin

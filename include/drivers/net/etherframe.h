@@ -4,7 +4,7 @@
 
 
 #include "../../common/types.h"
-#include "../../drivers/amd_am79c973.h"
+#include "../hw/amd_am79c973.h"
 #include "../../memorymanagement.h"
 
 

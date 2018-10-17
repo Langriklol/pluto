@@ -3,11 +3,10 @@
 #define __PLUTO__HARDWARECOMMUNICATION__PCI_H
 
 #include "../hardwarecommunication/port.h"
-#include "../drivers/driver.h"
+#include "../drivers/hw/driver.h"
 #include "../common/types.h"
 #include "../hardwarecommunication/interrupts.h"
-
-#include <../memorymanagement.h>
+#include "../memorymanagement.h"
 
 namespace pluto
 {

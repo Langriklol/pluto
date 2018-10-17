@@ -4,7 +4,7 @@
 
 #include "../../common/types.h"
 #include "../../hardwarecommunication/port.h"
-#include "../../drivers/driver.h"
+#include "driver.h"
 #include "../../hardwarecommunication/interrupts.h"
 
 namespace pluto
@@ -40,6 +40,41 @@ namespace pluto
             virtual void Activate();
         };
 
+        class MouseToConsole : public MouseEventHandler
+        {
+           char x, y;
+        public:
+
+            MouseToConsole()
+            {
+                unsigned short* VideoMemory = (unsigned short*)0xb8000;
+                x = 40;
+                y = 12;
+                VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0x0F00) << 4
+                                      | (VideoMemory[80*y+x] & 0xF000) >> 4
+                                      | (VideoMemory[80*y+x] & 0x00FF);
+            }
+
+            virtual void OnMouseMove(int xoffset, int yoffset)
+            {
+                static unsigned short* VideoMemory = (unsigned short*)0xb8000;
+                VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0x0F00) << 4
+                                      | (VideoMemory[80*y+x] & 0xF000) >> 4
+                                      | (VideoMemory[80*y+x] & 0x00FF);
+
+                x += xoffset;
+                if(x >= 80) x = 79;
+                if(x < 0) x = 0;
+                y += yoffset;
+                if(y >= 25) y = 24;
+                if(y < 0) y = 0;
+
+                VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0x0F00) << 4
+                                      | (VideoMemory[80*y+x] & 0xF000) >> 4
+                                      | (VideoMemory[80*y+x] & 0x00FF);
+            }
+
+        };
     }
 }
 

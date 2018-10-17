@@ -1,20 +1,19 @@
-
 #include "../include/common/types.h"
 #include "../include/gdt.h"
 #include "../include/memorymanagement.h"
 #include "../include/hardwarecommunication/interrupts.h"
 #include "../include/syscalls.h"
 #include "../include/hardwarecommunication/pci.h"
-#include "../include/drivers/driver.h"
-#include "../include/drivers/keyboard.h"
-#include "../include/drivers/mouse.h"
-#include "../include/drivers/vga.h"
-#include "../include/drivers/ata.h"
-#include "../include/gui/desktop.h"
-#include "../include/gui/window.h"
+#include "../include/drivers/hw/driver.h"
+#include "../include/drivers/hw/keyboard.h"
+#include "../include/drivers/hw/mouse.h"
+#include "../include/drivers/hw/vga.h"
+#include "../include/drivers/hw/ata.h"
+//#include "../include/gui/desktop.h"
+//#include "../include/gui/window.h"
 #include "../include/multitasking.h"
 
-#include "../include/drivers/amd_am79c973.h"
+#include "../include/drivers/hw/amd_am79c973.h"
 #include "../include/net/etherframe.h"
 #include "../include/net/arp.h"
 #include "../include/net/ipv4.h"
@@ -30,10 +29,8 @@ using namespace pluto;
 using namespace pluto::common;
 using namespace pluto::drivers;
 using namespace pluto::hardwarecommunication;
-using namespace pluto::gui;
+//using namespace pluto::gui;
 using namespace pluto::net;
-
-
 
 void printf(char* str)
 {
@@ -93,10 +90,6 @@ void printfHex32(uint32_t key)
     printfHex( key & 0xFF);
 }
 
-
-
-
-
 class PrintfKeyboardEventHandler : public KeyboardEventHandler
 {
 public:
@@ -106,42 +99,6 @@ public:
         foo[0] = c;
         printf(foo);
     }
-};
-
-class MouseToConsole : public MouseEventHandler
-{
-    int8_t x, y;
-public:
-
-    MouseToConsole()
-    {
-        uint16_t* VideoMemory = (uint16_t*)0xb8000;
-        x = 40;
-        y = 12;
-        VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0x0F00) << 4
-                            | (VideoMemory[80*y+x] & 0xF000) >> 4
-                            | (VideoMemory[80*y+x] & 0x00FF);
-    }
-
-    virtual void OnMouseMove(int xoffset, int yoffset)
-    {
-        static uint16_t* VideoMemory = (uint16_t*)0xb8000;
-        VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0x0F00) << 4
-                            | (VideoMemory[80*y+x] & 0xF000) >> 4
-                            | (VideoMemory[80*y+x] & 0x00FF);
-
-        x += xoffset;
-        if(x >= 80) x = 79;
-        if(x < 0) x = 0;
-        y += yoffset;
-        if(y >= 25) y = 24;
-        if(y < 0) y = 0;
-
-        VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0x0F00) << 4
-                            | (VideoMemory[80*y+x] & 0xF000) >> 4
-                            | (VideoMemory[80*y+x] & 0x00FF);
-    }
-
 };
 
 class PrintfUDPHandler : public UserDatagramProtocolHandler

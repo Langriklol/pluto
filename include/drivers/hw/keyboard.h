@@ -4,7 +4,7 @@
 
 #include "../../common/types.h"
 #include "../../hardwarecommunication/interrupts.h"
-#include "../../drivers/driver.h"
+#include "driver.h"
 #include "../../hardwarecommunication/port.h"
 
 namespace pluto
@@ -33,7 +33,6 @@ namespace pluto
             virtual pluto::common::uint32_t HandleInterrupt(pluto::common::uint32_t esp);
             virtual void Activate();
         };
-
     }
 }
 

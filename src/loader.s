@@ -27,11 +27,6 @@ _stop:
     hlt
     jmp _stop
 
-switchToProtected:
-    mov %eax, cr
-    or %al, 0x01
-    mov %es, %bx
-
 .section .bss
 .space 2*1024*1024; # 2 MiB
 kernel_stack:

@@ -4,7 +4,7 @@
 
 
 #include "../../common/types.h"
-#include "../../drivers/driver.h"
+#include "driver.h"
 #include "../../hardwarecommunication/pci.h"
 #include "../../hardwarecommunication/interrupts.h"
 #include "../../hardwarecommunication/port.h"
