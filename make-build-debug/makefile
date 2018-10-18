@@ -1,7 +1,7 @@
 # sudo apt-get install g++ binutils libc6-dev-i386
 # sudo apt-get install qemu qemu-system-i386 grub-legacy xorriso
 
-GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings
+GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -Wall -pedantic -Wextra -g
 ASPARAMS = --32
 LDPARAMS = -melf_i386
 
@@ -9,27 +9,24 @@ objects = obj/kernel.o \
           obj/loader.o \
           obj/gdt.o \
           obj/memorymanagement.o \
-          #obj/drivers/driver.o \
-          #obj/hardwarecommunication/port.o \
-          obj/hardwarecommunication/interruptstubs.o \
-          obj/hardwarecommunication/interrupts.o \
-          obj/syscalls.o \
           obj/multitasking.o \
-          obj/drivers/amd_am79c973.o \
-          obj/hardwarecommunication/pci.o \
-          obj/drivers/keyboard.o \
-          obj/drivers/mouse.o \
-          obj/drivers/vga.o \
-          obj/drivers/ata.o \
-          obj/gui/widget.o \
-          obj/gui/window.o \
-          obj/gui/desktop.o \
-          obj/net/etherframe.o \
+          obj/hardwarecommunication/interruptstubs.o \
+          obj/syscalls.o \
           obj/net/arp.o \
           obj/net/ipv4.o \
           obj/net/icmp.o \
           obj/net/udp.o \
-          obj/net/tcp.o
+          obj/net/tcp.o \
+          obj/net/etherframe.o \
+          obj/drivers/hw/keyboard.o \
+          obj/drivers/hw/mouse.o \
+          obj/drivers/hw/vga.o \
+          obj/drivers/hw/ata.o \
+          obj/drivers/hw/amd_am79c973.o \
+          obj/hardwarecommunication/pci.o \
+          obj/hardwarecommunication/interrupts.o \
+          obj/drivers/driver.o \
+          obj/hardwarecommunication/port.o \
 
 run: pluto.iso
 	 qemu-system-i386 -kernel kernel.bin
@@ -50,7 +47,7 @@ obj/%.o: ../src/drivers/hw/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: ../src/drivers/hwcomm/%.cpp
+obj/%.o: ../src/drivers/hwcommunication/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
@@ -67,7 +64,7 @@ obj/%.o: ../src/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 
-obj/%.o: ../src/drivers/hwcomm/%.s
+obj/%.o: ../src/drivers/hwcommunication/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 

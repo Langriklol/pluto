@@ -1,12 +1,9 @@
-
 #include "../../../drivers/amd_am79c973.h"
+
 using namespace pluto;
 using namespace pluto::common;
 using namespace pluto::drivers;
 using namespace pluto::hardwarecommunication;
-
-
-
 
 RawDataHandler::RawDataHandler(amd_am79c973* backend)
 {
@@ -28,10 +25,6 @@ void RawDataHandler::Send(uint8_t* buffer, uint32_t size)
 {
     backend->Send(buffer, size);
 }
-
-
-
-
 
 void printf(char*);
 void printfHex(uint8_t);
