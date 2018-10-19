@@ -1,5 +1,7 @@
-
-#include "../../../drivers/keyboard.h"
+#include "../../../include/drivers/hw/keyboard.h"
+#include "../../../include/hardwarecommunication/interrupts.h"
+#include "../../../include/drivers/hw/driver.h"
+#include "../../../include/drivers/hardwarecommunication/port.h"
 
 using namespace pluto::common;
 using namespace pluto::drivers;
@@ -17,10 +19,6 @@ void KeyboardEventHandler::OnKeyDown(char)
 void KeyboardEventHandler::OnKeyUp(char)
 {
 }
-
-
-
-
 
 KeyboardDriver::KeyboardDriver(InterruptManager* manager, KeyboardEventHandler *handler)
 : InterruptHandler(manager, 0x21),

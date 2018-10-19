@@ -1,5 +1,4 @@
-
-#include "../../../drivers/mouse.h"
+#include "../../../include/drivers/hw/mouse.h"
 
 
 using namespace pluto::common;

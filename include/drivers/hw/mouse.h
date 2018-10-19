@@ -1,11 +1,12 @@
-
 #ifndef __PLUTO__DRIVERS__MOUSE_H
 #define __PLUTO__DRIVERS__MOUSE_H
 
 #include "../../common/types.h"
 #include "../../hardwarecommunication/port.h"
 #include "driver.h"
-#include "../../hardwarecommunication/interrupts.h"
+#include "../hardwarecommunication/interrupts.h"
+
+using namespace pluto::hardwarecommunication;
 
 namespace pluto
 {
@@ -23,8 +24,7 @@ namespace pluto
             virtual void OnMouseMove(int x, int y);
         };
 
-
-        class MouseDriver : public pluto::hardwarecommunication::InterruptHandler, public Driver
+        class MouseDriver : public InterruptHandler, public Driver
         {
             pluto::hardwarecommunication::Port8Bit dataport;
             pluto::hardwarecommunication::Port8Bit commandport;
@@ -34,7 +34,7 @@ namespace pluto
 
             MouseEventHandler* handler;
         public:
-            MouseDriver(pluto::hardwarecommunication::InterruptManager* manager, MouseEventHandler* handler);
+            MouseDriver(InterruptManager* manager, MouseEventHandler* handler);
             ~MouseDriver();
             virtual pluto::common::uint32_t HandleInterrupt(pluto::common::uint32_t esp);
             virtual void Activate();

@@ -18,15 +18,15 @@ objects = obj/kernel.o \
           obj/net/udp.o \
           obj/net/tcp.o \
           obj/net/etherframe.o \
+          obj/hardwarecommunication/interrupts.o \
           obj/drivers/hw/keyboard.o \
           obj/drivers/hw/mouse.o \
           obj/drivers/hw/vga.o \
           obj/drivers/hw/ata.o \
           obj/drivers/hw/amd_am79c973.o \
           obj/hardwarecommunication/pci.o \
-          obj/hardwarecommunication/interrupts.o \
           obj/drivers/driver.o \
-          obj/hardwarecommunication/port.o \
+          #obj/hardwarecommunication/port.o
 
 run: pluto.iso
 	 qemu-system-i386 -kernel kernel.bin
@@ -47,24 +47,23 @@ obj/%.o: ../src/drivers/hw/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: ../src/drivers/hwcommunication/%.cpp
+obj/%.o: ../src/hardwarecommunication/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
+
+obj/%.o: ../src/hardwarecommunication/%.s
+	mkdir -p $(@D)
+	as $(ASPARAMS) -o $@ $<
 
 obj/%.o: ../src/drivers/net/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
-
 
 ob/%.o: ../src/%.cpp
 	mkdir -p $(@Đ)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
 obj/%.o: ../src/%.s
-	mkdir -p $(@D)
-	as $(ASPARAMS) -o $@ $<
-
-obj/%.o: ../src/drivers/hwcommunication/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 

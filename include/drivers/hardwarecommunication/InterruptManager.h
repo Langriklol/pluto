@@ -8,22 +8,21 @@
 #include "../../gdt.h"
 #include "../../common/types.h"
 #include "../../hardwarecommunication/port.h"
+#include "port.h"
+#include "interrupts.h"
 
-namespace pluto
-{
-    namespace gui
-    {
 
-        class InterruptManager
-        {
+namespace pluto {
+    namespace hardwarecommunication {
+        class InterruptManager {
             friend class InterruptHandler;
+
         protected:
 
-            static InterruptManager* ActiveInterruptManager;
-            InterruptHandler* handlers[256];
+            static InterruptManager *ActiveInterruptManager;
+            InterruptHandler *handlers[256];
 
-            struct GateDescriptor
-            {
+            struct GateDescriptor {
                 pluto::common::uint16_t handlerAddressLowBits;
                 pluto::common::uint16_t gdt_codeSegmentSelector;
                 pluto::common::uint8_t reserved;
@@ -33,13 +32,13 @@ namespace pluto
 
             static GateDescriptor interruptDescriptorTable[256];
 
-            struct InterruptDescriptorTablePointer
-            {
+            struct InterruptDescriptorTablePointer {
                 pluto::common::uint16_t size;
                 pluto::common::uint32_t base;
             } __attribute__((packed));
 
             pluto::common::uint16_t hardwareInterruptOffset;
+
             static void InterruptIgnore();
 
 
@@ -90,7 +89,10 @@ namespace pluto
             static void HandleException0x12();
             static void HandleException0x13();
 
-            static pluto::common::uint32_t HandleInterrupt(pluto::common::uint8_t interrupt, pluto::common::uint32_t esp);
+            static pluto::common::uint32_t
+
+            HandleInterrupt(pluto::common::uint8_t interrupt, pluto::common::uint32_t esp);
+
             pluto::common::uint32_t DoHandleInterrupt(pluto::common::uint8_t interrupt, pluto::common::uint32_t esp);
 
             Port8BitSlow programmableInterruptControllerMasterCommandPort;
@@ -99,10 +101,15 @@ namespace pluto
             Port8BitSlow programmableInterruptControllerSlaveDataPort;
 
         public:
-            InterruptManager(pluto::common::uint16_t hardwareInterruptOffset, pluto::GlobalDescriptorTable* globalDescriptorTable);
+            InterruptManager(pluto::common::uint16_t hardwareInterruptOffset,
+                             pluto::GlobalDescriptorTable *globalDescriptorTable);
+
             ~InterruptManager();
+
             pluto::common::uint16_t HardwareInterruptOffset();
+
             void Activate();
+
             void Deactivate();
         };
     }
