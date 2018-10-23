@@ -14,6 +14,18 @@
 
 namespace pluto {
     namespace hardwarecommunication {
+        class InterruptManager;
+        class InterruptHandler
+        {
+        protected:
+            pluto::common::uint8_t InterruptNumber;
+            InterruptManager* interruptManager;
+            InterruptHandler(InterruptManager* interruptManager, pluto::common::uint8_t InterruptNumber);
+            ~InterruptHandler();
+        public:
+            virtual pluto::common::uint32_t HandleInterrupt(pluto::common::uint32_t esp);
+        };
+
         class InterruptManager {
             friend class InterruptHandler;
 

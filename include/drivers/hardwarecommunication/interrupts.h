@@ -10,7 +10,7 @@ namespace pluto
 {
     namespace hardwarecommunication
     {
-        class InterruptHandler
+        /*class InterruptHandler
         {
         protected:
             pluto::common::uint8_t InterruptNumber;
@@ -19,7 +19,7 @@ namespace pluto
             ~InterruptHandler();
         public:
             virtual pluto::common::uint32_t HandleInterrupt(pluto::common::uint32_t esp);
-        };
+        };*/
     }
 }
 
