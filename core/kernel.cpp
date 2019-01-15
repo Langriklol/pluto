@@ -234,7 +234,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
             KeyboardDriver keyboard(&interrupts, &desktop);
         #else
             PrintfKeyboardEventHandler kbhandler;
-            KeyboardDriver keyboard(&interrupts, &kbhandler);
+            KeyboardDriver keyboard(&kbhandler);
         #endif
         drvManager.AddDriver(&keyboard);
 
@@ -243,7 +243,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
             MouseDriver mouse(&interrupts, &desktop);
         #else
             MouseToConsole mousehandler;
-            MouseDriver mouse(&interrupts, &mousehandler);
+            MouseDriver mouse(&mousehandler);
         #endif
         drvManager.AddDriver(&mouse);
 

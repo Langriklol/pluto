@@ -34,7 +34,7 @@ namespace pluto
 
             MouseEventHandler* handler;
         public:
-            MouseDriver(InterruptManager* manager, MouseEventHandler* handler);
+            MouseDriver(MouseEventHandler* handler);
             ~MouseDriver();
             virtual pluto::common::uint32_t HandleInterrupt(pluto::common::uint32_t esp);
             virtual void Activate();

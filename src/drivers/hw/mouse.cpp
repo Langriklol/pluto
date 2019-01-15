@@ -32,8 +32,8 @@ void printf(char*);
 
 
 
-    MouseDriver::MouseDriver(InterruptManager* manager, MouseEventHandler* handler)
-    : InterruptHandler(manager, 0x2C),
+    MouseDriver::MouseDriver(MouseEventHandler* handler)
+    : InterruptHandler(0x2C),
     dataport(0x60),
     commandport(0x64)
     {

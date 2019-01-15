@@ -10,7 +10,6 @@
 #include "port.h"
 #include "interrupts.h"
 
-
 namespace pluto {
     namespace hardwarecommunication {
         class InterruptManager {

@@ -1,3 +1,13 @@
+#include "../../include/drivers/hardwarecommunication/InterruptManager.h"
+
+using namespace pluto::hardwarecommunication;
+using namespace pluto::common;
+using namespace pluto;
+
+void printf(char* str);
+void printfHex(uint8_t);
+
+
 InterruptManager::GateDescriptor InterruptManager::interruptDescriptorTable[256];
 InterruptManager* InterruptManager::ActiveInterruptManager = 0;
 
@@ -27,12 +37,12 @@ InterruptManager::InterruptManager(GlobalDescriptorTable* globalDescriptorTable)
     const uint8_t IDT_INTERRUPT_GATE = 0xE;
     for(uint8_t i = 255; i > 0; --i)
     {
-        SetInterruptDescriptorTableEntry(i, CodeSegment, &InterruptIgnore, 0, IDT_INTERRUPT_GATE);
+        //SetInterruptDescriptorTableEntry(i, CodeSegment, &InterruptIgnore, 0, IDT_INTERRUPT_GATE);
         handlers[i] = 0;
     }
-    SetInterruptDescriptorTableEntry(0, CodeSegment, &InterruptIgnore, 0, IDT_INTERRUPT_GATE);
+    //SetInterruptDescriptorTableEntry(0, CodeSegment, &InterruptIgnore, 0, IDT_INTERRUPT_GATE);
     handlers[0] = 0;
-
+/*
     SetInterruptDescriptorTableEntry(0x00, CodeSegment, &HandleException0x00, 0, IDT_INTERRUPT_GATE);
     SetInterruptDescriptorTableEntry(0x01, CodeSegment, &HandleException0x01, 0, IDT_INTERRUPT_GATE);
     SetInterruptDescriptorTableEntry(0x02, CodeSegment, &HandleException0x02, 0, IDT_INTERRUPT_GATE);
@@ -70,7 +80,7 @@ InterruptManager::InterruptManager(GlobalDescriptorTable* globalDescriptorTable)
     SetInterruptDescriptorTableEntry(hardwareInterruptOffset + 0x0D, CodeSegment, &HandleInterruptRequest0x0D, 0, IDT_INTERRUPT_GATE);
     SetInterruptDescriptorTableEntry(hardwareInterruptOffset + 0x0E, CodeSegment, &HandleInterruptRequest0x0E, 0, IDT_INTERRUPT_GATE);
     SetInterruptDescriptorTableEntry(hardwareInterruptOffset + 0x0F, CodeSegment, &HandleInterruptRequest0x0F, 0, IDT_INTERRUPT_GATE);
-
+*/
     programmableInterruptControllerMasterCommandPort.Write(0x11);
     programmableInterruptControllerSlaveCommandPort.Write(0x11);
 

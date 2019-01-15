@@ -1,4 +1,4 @@
-#include "../../../drivers/amd_am79c973.h"
+#include "../../../include/drivers/hw/amd_am79c973.h"
 
 using namespace pluto;
 using namespace pluto::common;
@@ -32,7 +32,7 @@ void printfHex(uint8_t);
 
 amd_am79c973::amd_am79c973(PeripheralComponentInterconnectDeviceDescriptor *dev, InterruptManager* interrupts)
 :   Driver(),
-    InterruptHandler(interrupts, dev->interrupt + interrupts->HardwareInterruptOffset()),
+    InterruptHandler(dev->interrupt + InterruptManager::hardwareInterruptOffset),
     MACAddress0Port(dev->portBase),
     MACAddress2Port(dev->portBase + 0x02),
     MACAddress4Port(dev->portBase + 0x04),

@@ -1,5 +1,5 @@
-#include "../../include/hardwarecommunication/pci.h"
-#include "../../include/drivers/amd_am79c973.h"
+#include "../../include/drivers/hardwarecommunication/pci.h"
+#include "../../include/drivers/hw/amd_am79c973.h"
 
 using namespace pluto::common;
 using namespace pluto::drivers;

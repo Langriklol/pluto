@@ -19,6 +19,7 @@ objects = obj/kernel.o \
           obj/net/udp.o \
           obj/net/tcp.o \
           obj/net/etherframe.o \
+          obj/hardwarecommunication/InterruptManager.o \
           obj/hardwarecommunication/interrupts.o \
           obj/hardwarecommunication/pci.o \
           obj/hardwarecommunication/port.o \
@@ -60,8 +61,8 @@ obj/%.o: ../src/drivers/net/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-ob/%.o: ../src/%.cpp
-	mkdir -p $(@Đ)
+obj/%.o: ../src/%.cpp
+	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
 obj/%.o: ../src/%.s
