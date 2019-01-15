@@ -10,49 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab8f9fb4-693b-4c7c-8e4d-e00c4f92b4a3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/gdt.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/hardwarecommunication/interrupts.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/hardwarecommunication/interruptstubs.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/kernel.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/loader.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/memorymanagement.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/multitasking.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/net/arp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/net/etherframe.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/net/icmp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/net/ipv4.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/net/tcp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/net/udp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make-build-debug/obj_o/syscalls.o" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/gdt.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/gdt.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/hardwarecommunication/interruptstubs.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/hardwarecommunication/interruptstubs.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/kernel.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/kernel.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/memorymanagement.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/memorymanagement.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/multitasking.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/multitasking.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/net/arp.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/net/arp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/net/etherframe.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/net/etherframe.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/net/icmp.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/net/icmp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/net/ipv4.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/net/ipv4.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/net/tcp.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/net/tcp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/net/udp.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/net/udp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/obj/syscalls.o" afterPath="$PROJECT_DIR$/make-build-debug/obj/syscalls.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/pluto.iml" afterPath="$PROJECT_DIR$/.idea/pluto.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/kernel.cpp" afterPath="$PROJECT_DIR$/core/kernel.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/drivers/hardwarecommunication/InterruptManager.h" afterPath="$PROJECT_DIR$/include/drivers/hardwarecommunication/InterruptManager.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/drivers/hw/amd_am79c973.h" afterPath="$PROJECT_DIR$/include/drivers/hw/amd_am79c973.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/drivers/hw/keyboard.h" afterPath="$PROJECT_DIR$/include/drivers/hw/keyboard.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/drivers/hw/mouse.h" afterPath="$PROJECT_DIR$/include/drivers/hw/mouse.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/make-build-debug/makefile" afterPath="$PROJECT_DIR$/make-build-debug/makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drivers/hw/amd_am79c973.cpp" afterPath="$PROJECT_DIR$/src/drivers/hw/amd_am79c973.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drivers/hw/ata.cpp" afterPath="$PROJECT_DIR$/src/drivers/hw/ata.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drivers/hw/driver.cpp" afterPath="$PROJECT_DIR$/src/drivers/hw/driver.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drivers/hw/keyboard.cpp" afterPath="$PROJECT_DIR$/src/drivers/hw/keyboard.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drivers/hw/mouse.cpp" afterPath="$PROJECT_DIR$/src/drivers/hw/mouse.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drivers/hw/vga.cpp" afterPath="$PROJECT_DIR$/src/drivers/hw/vga.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hardwarecommunication/InterruptManager.cpp" afterPath="$PROJECT_DIR$/src/hardwarecommunication/InterruptManager.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hardwarecommunication/interrupts.cpp" afterPath="$PROJECT_DIR$/src/hardwarecommunication/interrupts.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hardwarecommunication/pci.cpp" afterPath="$PROJECT_DIR$/src/hardwarecommunication/pci.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hardwarecommunication/port.cpp" afterPath="$PROJECT_DIR$/src/hardwarecommunication/port.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hardwarecommunication/interruptstubs.s" afterPath="$PROJECT_DIR$/src/hardwarecommunication/interruptstubs.s" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,8 +31,8 @@
       <file leaf-file-name="InterruptManager.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/include/drivers/hardwarecommunication/InterruptManager.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="87" column="27" lean-forward="false" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="27" />
+            <state relative-caret-position="193">
+              <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
               <folding>
                 <element signature="e#106#128#0" expanded="true" />
               </folding>
@@ -90,8 +53,8 @@
       <file leaf-file-name="interruptstubs.s" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hardwarecommunication/interruptstubs.s">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="862">
-              <caret line="88" column="20" lean-forward="true" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
+            <state relative-caret-position="-612">
+              <caret line="12" column="33" lean-forward="false" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -122,8 +85,8 @@
       <file leaf-file-name="InterruptManager.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hardwarecommunication/InterruptManager.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1481">
-              <caret line="42" column="6" lean-forward="false" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+            <state relative-caret-position="307">
+              <caret line="39" column="62" lean-forward="false" selection-start-line="39" selection-start-column="62" selection-end-line="39" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -152,9 +115,11 @@
       <file leaf-file-name="kernel.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kernel.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3763">
-              <caret line="245" column="10" lean-forward="false" selection-start-line="245" selection-start-column="4" selection-end-line="245" selection-end-column="10" />
-              <folding />
+            <state relative-caret-position="344">
+              <caret line="394" column="9" lean-forward="false" selection-start-line="394" selection-start-column="9" selection-end-line="394" selection-end-column="9" />
+              <folding>
+                <element signature="e#10398#10417#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -162,10 +127,13 @@
       <file leaf-file-name="kernel.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/kernel.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1651">
-              <caret line="228" column="10" lean-forward="false" selection-start-line="228" selection-start-column="10" selection-end-line="228" selection-end-column="10" />
+            <state relative-caret-position="91">
+              <caret line="221" column="18" lean-forward="false" selection-start-line="221" selection-start-column="18" selection-end-line="221" selection-end-column="18" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#5546#5593#0" expanded="true" />
+                <element signature="e#5805#5846#0" expanded="true" />
+                <element signature="e#6171#6194#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -178,7 +146,10 @@
       <find>KeyboardEventHandler</find>
       <find>TaskManager</find>
       <find>Offset</find>
+      <find>interruptmana</find>
       <find>printf</find>
+      <find>InterruptI</find>
+      <find>interruptIgnore</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -214,8 +185,9 @@
         <option value="$PROJECT_DIR$/include/drivers/hw/mouse.h" />
         <option value="$PROJECT_DIR$/core/kernel.cpp" />
         <option value="$PROJECT_DIR$/make-build-debug/makefile" />
-        <option value="$PROJECT_DIR$/include/drivers/hardwarecommunication/InterruptManager.h" />
+        <option value="$PROJECT_DIR$/src/hardwarecommunication/interruptstubs.s" />
         <option value="$PROJECT_DIR$/src/hardwarecommunication/InterruptManager.cpp" />
+        <option value="$PROJECT_DIR$/include/drivers/hardwarecommunication/InterruptManager.h" />
       </list>
     </option>
   </component>
@@ -381,6 +353,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="hw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pluto" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pluto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hardwarecommunication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pluto" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pluto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -603,12 +611,12 @@
       <updated>1539704910991</updated>
       <workItem from="1539704912923" duration="4771000" />
       <workItem from="1547580864291" duration="4916000" />
-      <workItem from="1547586629755" duration="2080000" />
+      <workItem from="1547586629755" duration="3318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11767000" />
+    <option name="totallyTimeSpent" value="13005000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="705" extended-state="6" />
@@ -715,6 +723,9 @@
           <caret line="221" column="32" lean-forward="false" selection-start-line="221" selection-start-column="32" selection-end-line="221" selection-end-column="32" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#5546#5593#0" expanded="true" />
+            <element signature="e#5805#5846#0" expanded="true" />
+            <element signature="e#6171#6194#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -763,6 +774,9 @@
           <caret line="213" column="16" lean-forward="true" selection-start-line="213" selection-start-column="16" selection-end-line="213" selection-end-column="16" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#5546#5593#0" expanded="true" />
+            <element signature="e#5805#5846#0" expanded="true" />
+            <element signature="e#6171#6194#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -956,24 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/kernel.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1651">
-          <caret line="228" column="10" lean-forward="false" selection-start-line="228" selection-start-column="10" selection-end-line="228" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kernel.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3763">
-          <caret line="245" column="10" lean-forward="false" selection-start-line="245" selection-start-column="4" selection-end-line="245" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/drivers/hw/driver.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1000,14 +996,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hardwarecommunication/InterruptManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1481">
-          <caret line="42" column="6" lean-forward="false" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hardwarecommunication/interrupts.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1016,18 +1004,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/kernel.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="221" column="18" lean-forward="false" selection-start-line="221" selection-start-column="18" selection-end-line="221" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#5546#5593#0" expanded="true" />
+            <element signature="e#5805#5846#0" expanded="true" />
+            <element signature="e#6171#6194#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kernel.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="394" column="9" lean-forward="false" selection-start-line="394" selection-start-column="9" selection-end-line="394" selection-end-column="9" />
+          <folding>
+            <element signature="e#10398#10417#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/hardwarecommunication/interruptstubs.s">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="862">
-          <caret line="88" column="20" lean-forward="true" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
+        <state relative-caret-position="-612">
+          <caret line="12" column="33" lean-forward="false" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hardwarecommunication/InterruptManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="39" column="62" lean-forward="false" selection-start-line="39" selection-start-column="62" selection-end-line="39" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/drivers/hardwarecommunication/InterruptManager.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="87" column="27" lean-forward="false" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="27" />
+        <state relative-caret-position="193">
+          <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
           <folding>
             <element signature="e#106#128#0" expanded="true" />
           </folding>
