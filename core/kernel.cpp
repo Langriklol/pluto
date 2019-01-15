@@ -1,9 +1,9 @@
 #include "../include/common/types.h"
 #include "../include/gdt.h"
 #include "../include/memorymanagement.h"
-#include "../include/hardwarecommunication/interrupts.h"
+#include "../include/drivers/hardwarecommunication/interrupts.h"
 #include "../include/syscalls.h"
-#include "../include/hardwarecommunication/pci.h"
+#include "../include/drivers/hardwarecommunication/pci.h"
 #include "../include/drivers/hw/driver.h"
 #include "../include/drivers/hw/keyboard.h"
 #include "../include/drivers/hw/mouse.h"
@@ -219,8 +219,8 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     taskManager.AddTask(&task2);
     */
 
-    InterruptManager interrupts(0x20, &gdt, &taskManager);
-    SyscallHandler syscalls(&interrupts, 0x80);
+    InterruptManager interrupts(&gdt);
+    SyscallHandler syscalls(0x80);
 
     printf("[INFO]: Initializing hardware (STAGE 1)... ");
 
@@ -234,7 +234,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
             KeyboardDriver keyboard(&interrupts, &desktop);
         #else
             PrintfKeyboardEventHandler kbhandler;
-            KeyboardDriver keyboard(&interrupts, &kbhandler);
+            KeyboardDriver keyboard(&kbhandler);
         #endif
         drvManager.AddDriver(&keyboard);
 
@@ -243,7 +243,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
             MouseDriver mouse(&interrupts, &desktop);
         #else
             MouseToConsole mousehandler;
-            MouseDriver mouse(&interrupts, &mousehandler);
+            MouseDriver mouse(&mousehandler);
         #endif
         drvManager.AddDriver(&mouse);
 

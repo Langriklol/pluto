@@ -3,9 +3,9 @@
 #define __PLUTO__DRIVERS__KEYBOARD_H
 
 #include "../../common/types.h"
-#include "../../hardwarecommunication/interrupts.h"
+#include "../hardwarecommunication/interrupts.h"
 #include "driver.h"
-#include "../../hardwarecommunication/port.h"
+#include "../hardwarecommunication/port.h"
 
 namespace pluto
 {
@@ -28,7 +28,7 @@ namespace pluto
 
             KeyboardEventHandler* handler;
         public:
-            KeyboardDriver(pluto::hardwarecommunication::InterruptManager* manager, KeyboardEventHandler *handler);
+            KeyboardDriver(KeyboardEventHandler *handler);
             ~KeyboardDriver();
             virtual pluto::common::uint32_t HandleInterrupt(pluto::common::uint32_t esp);
             virtual void Activate();

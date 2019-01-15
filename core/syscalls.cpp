@@ -1,12 +1,11 @@
-
-#include "../../include/syscalls.h"
+#include "../include/syscalls.h"
 
 using namespace pluto;
 using namespace pluto::common;
 using namespace pluto::hardwarecommunication;
 
-SyscallHandler::SyscallHandler(InterruptManager* interruptManager, uint8_t InterruptNumber)
-:    InterruptHandler(interruptManager, InterruptNumber  + interruptManager->HardwareInterruptOffset())
+SyscallHandler::SyscallHandler(uint8_t InterruptNumber)
+:    InterruptHandler(InterruptNumber  + InterruptManager::hardwareInterruptOffset)
 {
 }
 

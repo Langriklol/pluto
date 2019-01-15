@@ -2,7 +2,7 @@
 #define __PLUTO__DRIVERS__MOUSE_H
 
 #include "../../common/types.h"
-#include "../../hardwarecommunication/port.h"
+#include "../hardwarecommunication/port.h"
 #include "driver.h"
 #include "../hardwarecommunication/interrupts.h"
 
@@ -34,7 +34,7 @@ namespace pluto
 
             MouseEventHandler* handler;
         public:
-            MouseDriver(InterruptManager* manager, MouseEventHandler* handler);
+            MouseDriver(MouseEventHandler* handler);
             ~MouseDriver();
             virtual pluto::common::uint32_t HandleInterrupt(pluto::common::uint32_t esp);
             virtual void Activate();

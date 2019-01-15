@@ -1,5 +1,5 @@
 #include "../../../include/drivers/hw/keyboard.h"
-#include "../../../include/hardwarecommunication/interrupts.h"
+#include "../../../include/drivers/hardwarecommunication/interrupts.h"
 #include "../../../include/drivers/hw/driver.h"
 #include "../../../include/drivers/hardwarecommunication/port.h"
 
@@ -20,8 +20,8 @@ void KeyboardEventHandler::OnKeyUp(char)
 {
 }
 
-KeyboardDriver::KeyboardDriver(InterruptManager* manager, KeyboardEventHandler *handler)
-: InterruptHandler(manager, 0x21),
+KeyboardDriver::KeyboardDriver(KeyboardEventHandler *handler)
+: InterruptHandler(0x21),
 dataport(0x60),
 commandport(0x64)
 {

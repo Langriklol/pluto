@@ -1,5 +1,5 @@
 
-#include "../../../drivers/vga.h"
+#include "../../../include/drivers/hw/vga.h"
 
 using namespace pluto::common;
 using namespace pluto::drivers;

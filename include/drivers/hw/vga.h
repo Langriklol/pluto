@@ -4,7 +4,7 @@
 #define __PLUTO__DRIVERS__VGA_H
 
 #include "../../common/types.h"
-#include "../../hardwarecommunication/port.h"
+#include "../hardwarecommunication/port.h"
 #include "driver.h"
 
 namespace pluto
