@@ -30,67 +30,67 @@ objects = build/kernel.o \
           build/drivers/hw/driver.o \
           build/drivers/hw/mouse.o
 
-run: pluto.iso
-	 qemu-system-i386 -kernel kernel.bin
+run: build/pluto.iso
+	 qemu-system-i386 -kernel build/kernel.bin
 
-build/%.o: ../core/%.cpp
+build/%.o: core/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-build/%.o: ../src/drivers/%.cpp
+build/%.o: src/drivers/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-build/%.o: ../src/gui/%.cpp
+build/%.o: src/gui/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-build/%.o: ../src/drivers/hw/%.cpp
+build/%.o: src/drivers/hw/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-build/%.o: ../src/hardwarecommunication/%.cpp
+build/%.o: src/hardwarecommunication/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-build/%.o: ../src/hardwarecommunication/%.s
+build/%.o: src/hardwarecommunication/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 
-build/%.o: ../src/drivers/net/%.cpp
+build/%.o: src/drivers/net/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-build/%.o: ../src/%.cpp
+build/%.o: src/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-build/%.o: ../src/%.s
+build/%.o: src/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 
-build/%.o: ../src/drivers/%.s
+build/%.o: src/drivers/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 
 build/kernel.bin: linker.ld $(objects)
 	ld $(LDPARAMS) -T $< -o $@ $(objects)
 
-pluto.iso: build/kernel.bin
+build/pluto.iso: build/kernel.bin
 	mkdir build/iso
 	mkdir build/iso/boot
 	mkdir build/iso/boot/grub
 	cp build/kernel.bin build/iso/boot/
-	echo 'set timeout=0'                      > iso/boot/grub/grub.cfg
-	echo 'set default=0'                     >> iso/boot/grub/grub.cfg
-	echo ''                                  >> iso/boot/grub/grub.cfg
-	echo 'menuentry "Pluto OS v. 0.1" {' >> iso/boot/grub/grub.cfg
-	echo '  multiboot /boot/kernel.bin'    >> iso/boot/grub/grub.cfg
-	echo '  boot'                            >> iso/boot/grub/grub.cfg
-	echo '}'                                 >> iso/boot/grub/grub.cfg
-	grub-mkrescue --output=pluto.iso
+	echo 'set timeout=0'                      > build/iso/boot/grub/grub.cfg
+	echo 'set default=0'                     >> build/iso/boot/grub/grub.cfg
+	echo ''                                  >> build/iso/boot/grub/grub.cfg
+	echo 'menuentry "Pluto OS v. 0.1" {' >> build/iso/boot/grub/grub.cfg
+	echo '  multiboot /boot/kernel.bin'    >> build/iso/boot/grub/grub.cfg
+	echo '  boot'                            >> build/iso/boot/grub/grub.cfg
+	echo '}'                                 >> build/iso/boot/grub/grub.cfg
+	grub-mkrescue --output=build/pluto.iso
 
-install: kernel.bin
+install: build/kernel.bin
 	sudo cp $< /boot/kernel.bin
 
 .PHONY: clean
