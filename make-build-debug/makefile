@@ -1,7 +1,8 @@
 # sudo apt-get install g++ binutils libc6-dev-i386
 # sudo apt-get install qemu qemu-system-i386 grub-legacy xorriso
 
-GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -Wall -pedantic -Wextra -g
+#GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -Wall -pedantic -Wextra -g
+GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -g
 ASPARAMS = --32
 LDPARAMS = -melf_i386
 
@@ -19,14 +20,14 @@ objects = obj/kernel.o \
           obj/net/tcp.o \
           obj/net/etherframe.o \
           obj/hardwarecommunication/interrupts.o \
-          obj/drivers/hw/keyboard.o \
-          obj/drivers/hw/mouse.o \
-          obj/drivers/hw/vga.o \
-          obj/drivers/hw/ata.o \
-          obj/drivers/hw/amd_am79c973.o \
           obj/hardwarecommunication/pci.o \
-          obj/drivers/driver.o \
-          #obj/hardwarecommunication/port.o
+          obj/hardwarecommunication/port.o \
+          obj/drivers/hw/amd_am79c973.o \
+          obj/drivers/hw/keyboard.o \
+          obj/drivers/hw/ata.o \
+          obj/drivers/hw/vga.o \
+          obj/drivers/hw/driver.o \
+          obj/drivers/hw/mouse.o
 
 run: pluto.iso
 	 qemu-system-i386 -kernel kernel.bin

@@ -2,7 +2,7 @@
 #define __PLUTO__DRIVERS__MOUSE_H
 
 #include "../../common/types.h"
-#include "../../hardwarecommunication/port.h"
+#include "../hardwarecommunication/port.h"
 #include "driver.h"
 #include "../hardwarecommunication/interrupts.h"
 

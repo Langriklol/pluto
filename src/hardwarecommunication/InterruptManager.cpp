@@ -1,13 +1,5 @@
-//
-// Created by lango on 4/27/18.
-//
-
-
 InterruptManager::GateDescriptor InterruptManager::interruptDescriptorTable[256];
 InterruptManager* InterruptManager::ActiveInterruptManager = 0;
-
-
-
 
 void InterruptManager::SetInterruptDescriptorTableEntry(uint8_t interrupt,
                                                         uint16_t CodeSegment, void (*handler)(), uint8_t DescriptorPrivilegeLevel, uint8_t DescriptorType)
@@ -24,13 +16,12 @@ void InterruptManager::SetInterruptDescriptorTableEntry(uint8_t interrupt,
 }
 
 
-InterruptManager::InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescriptorTable* globalDescriptorTable)
+InterruptManager::InterruptManager(GlobalDescriptorTable* globalDescriptorTable)
         : programmableInterruptControllerMasterCommandPort(0x20),
           programmableInterruptControllerMasterDataPort(0x21),
           programmableInterruptControllerSlaveCommandPort(0xA0),
           programmableInterruptControllerSlaveDataPort(0xA1)
 {
-    this->hardwareInterruptOffset = hardwareInterruptOffset;
     uint32_t CodeSegment = globalDescriptorTable->CodeSegmentSelector();
 
     const uint8_t IDT_INTERRUPT_GATE = 0xE;
@@ -105,11 +96,6 @@ InterruptManager::InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescr
 InterruptManager::~InterruptManager()
 {
     Deactivate();
-}
-
-uint16_t InterruptManager::HardwareInterruptOffset()
-{
-    return hardwareInterruptOffset;
 }
 
 void InterruptManager::Activate()

@@ -3,8 +3,8 @@
 #define __PLUTO__DRIVERS__ATA_H
 
 #include "../../common/types.h"
-#include "../../hardwarecommunication/interrupts.h"
-#include "../../hardwarecommunication/port.h"
+#include "../hardwarecommunication/interrupts.h"
+#include "../hardwarecommunication/port.h"
 
 namespace pluto
 {

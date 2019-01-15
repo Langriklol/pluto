@@ -2,12 +2,12 @@
 #ifndef __PLUTO__HARDWARECOMMUNICATION__PCI_H
 #define __PLUTO__HARDWARECOMMUNICATION__PCI_H
 
-#include "../../hardwarecommunication/port.h"
-#include "../../drivers/driver.h"
+#include "port.h"
+#include "../hw/driver.h"
 #include "../../common/types.h"
-#include "../../hardwarecommunication/interrupts.h"
-
-#include <memorymanagement.h>
+#include "interrupts.h"
+#include "InterruptManager.h"
+#include "../memorymanagement.h"
 
 namespace pluto
 {
@@ -19,8 +19,6 @@ namespace pluto
             MemoryMapping = 0,
             InputOutput = 1
         };
-
-
 
         class BaseAddressRegister
         {

@@ -6,10 +6,9 @@ using namespace pluto::hardwarecommunication;
 void printf(char* str);
 void printfHex(uint8_t);
 
-InterruptHandler::InterruptHandler(InterruptManager* interruptManager, uint8_t InterruptNumber)
+InterruptHandler::InterruptHandler(uint8_t InterruptNumber)
 {
     this->InterruptNumber = InterruptNumber;
-    this->interruptManager = interruptManager;
     interruptManager->handlers[InterruptNumber] = this;
 }
 

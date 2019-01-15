@@ -7,30 +7,15 @@
 
 #include "../../gdt.h"
 #include "../../common/types.h"
-#include "../../hardwarecommunication/port.h"
 #include "port.h"
 #include "interrupts.h"
 
 
 namespace pluto {
     namespace hardwarecommunication {
-        class InterruptManager;
-        class InterruptHandler
-        {
-        protected:
-            pluto::common::uint8_t InterruptNumber;
-            InterruptManager* interruptManager;
-            InterruptHandler(InterruptManager* interruptManager, pluto::common::uint8_t InterruptNumber);
-            ~InterruptHandler();
-        public:
-            virtual pluto::common::uint32_t HandleInterrupt(pluto::common::uint32_t esp);
-        };
-
         class InterruptManager {
-            friend class InterruptHandler;
 
         protected:
-
             static InterruptManager *ActiveInterruptManager;
             InterruptHandler *handlers[256];
 
@@ -48,8 +33,6 @@ namespace pluto {
                 pluto::common::uint16_t size;
                 pluto::common::uint32_t base;
             } __attribute__((packed));
-
-            pluto::common::uint16_t hardwareInterruptOffset;
 
             static void InterruptIgnore();
 
@@ -113,12 +96,10 @@ namespace pluto {
             Port8BitSlow programmableInterruptControllerSlaveDataPort;
 
         public:
-            InterruptManager(pluto::common::uint16_t hardwareInterruptOffset,
-                             pluto::GlobalDescriptorTable *globalDescriptorTable);
-
+            InterruptManager(pluto::GlobalDescriptorTable *globalDescriptorTable);
             ~InterruptManager();
 
-            pluto::common::uint16_t HardwareInterruptOffset();
+            static const pluto::common::uint16_t hardwareInterruptOffset = 0x20;
 
             void Activate();
 

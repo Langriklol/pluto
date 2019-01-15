@@ -1,9 +1,9 @@
-
 #ifndef __PLUTO__SYSCALLS_H
 #define __PLUTO__SYSCALLS_H
 
 #include "common/types.h"
-#include "hardwarecommunication/interrupts.h"
+#include "drivers/hardwarecommunication/interrupts.h"
+#include "drivers/hardwarecommunication/InterruptManager.h"
 #include "multitasking.h"
 
 namespace pluto
@@ -13,7 +13,7 @@ namespace pluto
     {
 
     public:
-        SyscallHandler(hardwarecommunication::InterruptManager* interruptManager, pluto::common::uint8_t InterruptNumber);
+        SyscallHandler(pluto::common::uint8_t InterruptNumber);
         ~SyscallHandler();
 
         virtual pluto::common::uint32_t HandleInterrupt(pluto::common::uint32_t esp);
