@@ -6,81 +6,81 @@ GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti 
 ASPARAMS = --32
 LDPARAMS = -melf_i386
 
-objects = obj/kernel.o \
-          obj/loader.o \
-          obj/gdt.o \
-          obj/memorymanagement.o \
-          obj/multitasking.o \
-          obj/hardwarecommunication/interruptstubs.o \
-          obj/syscalls.o \
-          obj/net/arp.o \
-          obj/net/ipv4.o \
-          obj/net/icmp.o \
-          obj/net/udp.o \
-          obj/net/tcp.o \
-          obj/net/etherframe.o \
-          obj/hardwarecommunication/InterruptManager.o \
-          obj/hardwarecommunication/interrupts.o \
-          obj/hardwarecommunication/pci.o \
-          obj/hardwarecommunication/port.o \
-          obj/drivers/hw/amd_am79c973.o \
-          obj/drivers/hw/keyboard.o \
-          obj/drivers/hw/ata.o \
-          obj/drivers/hw/vga.o \
-          obj/drivers/hw/driver.o \
-          obj/drivers/hw/mouse.o
+objects = build/kernel.o \
+          build/loader.o \
+          build/gdt.o \
+          build/memorymanagement.o \
+          build/multitasking.o \
+          build/hardwarecommunication/interruptstubs.o \
+          build/syscalls.o \
+          build/net/arp.o \
+          build/net/ipv4.o \
+          build/net/icmp.o \
+          build/net/udp.o \
+          build/net/tcp.o \
+          build/net/etherframe.o \
+          build/hardwarecommunication/InterruptManager.o \
+          build/hardwarecommunication/interrupts.o \
+          build/hardwarecommunication/pci.o \
+          build/hardwarecommunication/port.o \
+          build/drivers/hw/amd_am79c973.o \
+          build/drivers/hw/keyboard.o \
+          build/drivers/hw/ata.o \
+          build/drivers/hw/vga.o \
+          build/drivers/hw/driver.o \
+          build/drivers/hw/mouse.o
 
 run: pluto.iso
 	 qemu-system-i386 -kernel kernel.bin
 
-obj/%.o: ../core/%.cpp
+build/%.o: ../core/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: ../src/drivers/%.cpp
+build/%.o: ../src/drivers/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: ../src/gui/%.cpp
+build/%.o: ../src/gui/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: ../src/drivers/hw/%.cpp
+build/%.o: ../src/drivers/hw/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: ../src/hardwarecommunication/%.cpp
+build/%.o: ../src/hardwarecommunication/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: ../src/hardwarecommunication/%.s
+build/%.o: ../src/hardwarecommunication/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 
-obj/%.o: ../src/drivers/net/%.cpp
+build/%.o: ../src/drivers/net/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: ../src/%.cpp
+build/%.o: ../src/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 
-obj/%.o: ../src/%.s
+build/%.o: ../src/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 
-obj/%.o: ../src/drivers/%.s
+build/%.o: ../src/drivers/%.s
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 
-kernel.bin: ../linker.ld $(objects)
+build/kernel.bin: linker.ld $(objects)
 	ld $(LDPARAMS) -T $< -o $@ $(objects)
 
-pluto.iso: kernel.bin
-	mkdir iso
-	mkdir iso/boot
-	mkdir iso/boot/grub
-	cp kernel.bin iso/boot/
+pluto.iso: build/kernel.bin
+	mkdir build/iso
+	mkdir build/iso/boot
+	mkdir build/iso/boot/grub
+	cp build/kernel.bin build/iso/boot/
 	echo 'set timeout=0'                      > iso/boot/grub/grub.cfg
 	echo 'set default=0'                     >> iso/boot/grub/grub.cfg
 	echo ''                                  >> iso/boot/grub/grub.cfg
@@ -95,4 +95,4 @@ install: kernel.bin
 
 .PHONY: clean
 clean:
-	rm -rf obj kernel.bin pluto.iso iso
+	rm -rf build
