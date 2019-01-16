@@ -270,7 +270,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     #endif // GRAPHICSMODE
 	printf("DONE!\n\n");
 
-    /*
+
     printf("\nS-ATA primary master: ");
     AdvancedTechnologyAttachment ata0m(true, 0x1F0);
     ata0m.Identify();
@@ -291,7 +291,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     ata1s.Identify();
     // third: 0x1E8
     // fourth: 0x168
-  	*/
+
 
     amd_am79c973* eth0 = (amd_am79c973*)(drvManager.drivers[2]);
 
@@ -304,7 +304,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     eth0->SetIPAddress(ip_be);
     EtherFrameProvider etherframe(eth0);
     AddressResolutionProtocol arp(&etherframe);
-	printf("[INFO]: IP Address saved!");
+	printf("\n[INFO]: IP Address saved!");
 
     // IP Address of the default gateway
     uint8_t gip1 = 10, gip2 = 0, gip3 = 2, gip4 = 2;
@@ -323,22 +323,21 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     InternetControlMessageProtocol icmp(&ipv4);
     UserDatagramProtocolProvider udp(&ipv4);
     TransmissionControlProtocolProvider tcp(&ipv4);
-	printf("[INFO]: IP Address of default gateway saved!");
+	printf("\n[INFO]: IP Address of default gateway saved!");
 
     interrupts.Activate();
 
-    printf("[INFO]: Interrupts are active!");
+    printf("\n[INFO]: Interrupts are active!");
 
     arp.BroadcastMACAddress(gip_be);
 
-
-    PrintfTCPHandler tcphandler;
-    TransmissionControlProtocolSocket* tcpsocket = tcp.Listen(1234);
-    tcp.Bind(tcpsocket, &tcphandler);
+    //PrintfTCPHandler tcphandler;
+    //TransmissionControlProtocolSocket* tcpsocket = tcp.Listen(1234);
+    //tcp.Bind(tcpsocket, &tcphandler);
     //tcpsocket->Send((uint8_t*)"Hello TCP!", 10);
 
 
-    //icmp.RequestEchoReply(gip_be);
+    icmp.RequestEchoReply(gip_be);
 
     //PrintfUDPHandler udphandler;
     //UserDatagramProtocolSocket* udpsocket = udp.Connect(gip_be, 1234);
