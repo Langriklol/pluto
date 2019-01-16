@@ -7,6 +7,7 @@
 #include "driver.h"
 #include "../hardwarecommunication/pci.h"
 #include "../hardwarecommunication/interrupts.h"
+#include "../hardwarecommunication/InterruptManager.h"
 #include "../hardwarecommunication/port.h"
 
 

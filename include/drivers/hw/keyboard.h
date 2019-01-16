@@ -28,7 +28,7 @@ namespace pluto
 
             KeyboardEventHandler* handler;
         public:
-            KeyboardDriver(pluto::hardwarecommunication::InterruptManager* manager, KeyboardEventHandler *handler);
+            KeyboardDriver(KeyboardEventHandler *handler);
             ~KeyboardDriver();
             virtual pluto::common::uint32_t HandleInterrupt(pluto::common::uint32_t esp);
             virtual void Activate();

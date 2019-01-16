@@ -4,7 +4,7 @@
 
 .section .text
 
-.extern _ZN4pluto21hardwarecommunication16InterruptManager15HandleInterruptEhj
+.extern _ZN5pluto21hardwarecommunication16InterruptManager15HandleInterruptEhj
 
 
 .macro HandleException num
@@ -93,7 +93,7 @@ int_bottom:
     # call C++ Handler
     pushl %esp
     push (interruptnumber)
-    call _ZN4pluto21hardwarecommunication16InterruptManager15HandleInterruptEhj
+    call _ZN5pluto21hardwarecommunication16InterruptManager15HandleInterruptEhj
     #add %esp, 6
     mov %eax, %esp # switch the stack
 
