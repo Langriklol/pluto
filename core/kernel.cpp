@@ -60,11 +60,12 @@ void printf(char* str)
 
         if(y >= 25)
         {
-            for(y = 0; y < 25; y++)
+            uint8_t ybak = y - 24;
+            for(y = 0; y < 24; y++)
                 for(x = 0; x < 80; x++)
-                    VideoMemory[80*y+x] = 0;
+                    VideoMemory[80*y+x] = VideoMemory[80*(y+ybak)+x] ;
             x = 0;
-            y = 0;
+            y = 24;
         }
     }
 }
@@ -347,21 +348,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     //udpsocket->Send((uint8_t*)"Hello UDP!", 10);
 
     //UserDatagramProtocolSocket* udpsocket = udp.Listen(1234);
-    //udp.Bind(udpsocket, &udphandler);
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
-    printf("\n[INFO]: Running GUI");
+    //udp.Bind(udpsocket, &udphandler)
 
     #ifdef GRAPHICSMODE
         printf("\n[INFO]: Running GUI");
