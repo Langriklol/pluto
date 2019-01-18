@@ -28,6 +28,11 @@ objects = build/kernel.o \
           build/drivers/hw/ata.o \
           build/drivers/hw/vga.o \
           build/drivers/hw/driver.o \
+          build/gui/CompositeWidget.o \
+          build/gui/desktop.o \
+          build/gui/widget.o \
+          build/gui/Window.o \
+          build/gui/window.o \
           build/drivers/hw/mouse.o
 
 run: build/pluto.iso

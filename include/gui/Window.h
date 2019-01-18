@@ -26,7 +26,7 @@ namespace pluto
                 void setZ(short z);
                 void setSizeX(int size);
                 void setSizeY(int size);
-                void active(bool active);
+                void activate(bool active);
                 //Constructors
                 Window(char* name, int pid);
                 Window(char* name, Task *task);

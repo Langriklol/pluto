@@ -11,7 +11,7 @@ namespace pluto
     namespace gui
     {
         
-        class Window : CompositeWidget
+        class Window : public CompositeWidget
         { 
         protected:
             bool Dragging;

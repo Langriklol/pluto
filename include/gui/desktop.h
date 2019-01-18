@@ -11,7 +11,7 @@ namespace pluto
     namespace gui
     {
         
-        class Desktop : CompositeWidget, pluto::drivers::MouseEventHandler
+        class Desktop :public  CompositeWidget, public pluto::drivers::MouseEventHandler
         {
         protected:
             common::uint32_t MouseX;

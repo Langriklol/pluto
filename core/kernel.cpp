@@ -22,7 +22,7 @@
 #include "../include/net/tcp.h"
 
 
-//#define GRAPHICSMODE
+#define GRAPHICSMODE
 
 
 using namespace pluto;

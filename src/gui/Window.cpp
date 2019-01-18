@@ -62,7 +62,7 @@ void Window::move(int x, int y)
     this->setY(y);
 }
 
-void Window::active(bool active)
+void Window::activate(bool active)
 {
     this->active = active;
 }

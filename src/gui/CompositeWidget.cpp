@@ -1,3 +1,8 @@
+#include "../include/gui/CompositeWidget.h"
+
+using namespace pluto::common;
+using namespace pluto::gui;
+
 CompositeWidget::CompositeWidget(Widget* parent,
                                  common::int32_t x, common::int32_t y, common::int32_t w, common::int32_t h,
                                  common::uint8_t r, common::uint8_t g, common::uint8_t b)

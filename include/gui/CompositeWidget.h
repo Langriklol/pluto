@@ -1,9 +1,9 @@
-//
-// Created by lango on 4/27/18.
-//
+#include "../common/types.h"
+#include "widget.h"
 
 #ifndef PLUTO_COMPOSITEWIDGET_H
 #define PLUTO_COMPOSITEWIDGET_H
+
 namespace pluto
 {
     namespace gui{
