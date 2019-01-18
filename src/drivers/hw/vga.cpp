@@ -76,7 +76,7 @@ void VideoGraphicsArray::WriteRegisters(uint8_t* registers)
 
 bool VideoGraphicsArray::SupportsMode(uint32_t width, uint32_t height, uint32_t colordepth)
 {
-    return width == 320 && height == 200 && colordepth == 8;
+    return width == 320 && height == 200 && colordepth == 256;
 }
 
 bool VideoGraphicsArray::SetMode(uint32_t width, uint32_t height, uint32_t colordepth)

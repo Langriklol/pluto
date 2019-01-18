@@ -225,7 +225,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     printf("[INFO]: Initializing hardware (STAGE 1)... ");
 
     #ifdef GRAPHICSMODE
-        Desktop desktop(320,200, 0x00,0x00,0xA8);
+        Desktop desktop(320,200, 0x08,0x08,0x08);
     #endif
 
     DriverManager drvManager;
@@ -262,10 +262,10 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     printf("[INFO]: Initializing hardware (STAGE 3)... ");
 
     #ifdef GRAPHICSMODE
-        vga.SetMode(1440,900,16);
-        Window win1(&desktop, 10,10,20,20, 0xA8,0x00,0x00);
+        vga.SetMode(320,200,256);
+        Window win1(&desktop, 10,10,20,20, 0x08,0x00,0x00);
         desktop.AddChild(&win1);
-        Window win2(&desktop, 40,15,30,30, 0x00,0xA8,0x00);
+        Window win2(&desktop, 40,15,30,30, 0x00,0x08,0x00);
         desktop.AddChild(&win2);
     #endif // GRAPHICSMODE
 	printf("DONE!\n\n");
@@ -349,6 +349,9 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     //UserDatagramProtocolSocket* udpsocket = udp.Listen(1234);
     //udp.Bind(udpsocket, &udphandler);
 
+    #ifdef GRAPHICSMODE
+        printf("\n[INFO]: Running GUI");
+    #endif
 
     while(1)
     {
