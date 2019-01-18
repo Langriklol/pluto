@@ -9,8 +9,8 @@
 #include "../include/drivers/hw/mouse.h"
 #include "../include/drivers/hw/vga.h"
 #include "../include/drivers/hw/ata.h"
-//#include "../include/gui/desktop.h"
-//#include "../include/gui/window.h"
+#include "../include/gui/desktop.h"
+#include "../include/gui/window.h"
 #include "../include/multitasking.h"
 
 #include "../include/drivers/hw/amd_am79c973.h"
@@ -22,14 +22,14 @@
 #include "../include/net/tcp.h"
 
 
-// #define GRAPHICSMODE
+//#define GRAPHICSMODE
 
 
 using namespace pluto;
 using namespace pluto::common;
 using namespace pluto::drivers;
 using namespace pluto::hardwarecommunication;
-//using namespace pluto::gui;
+using namespace pluto::gui;
 using namespace pluto::net;
 
 void printf(char* str)
@@ -231,7 +231,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     DriverManager drvManager;
 
         #ifdef GRAPHICSMODE
-            KeyboardDriver keyboard(&interrupts, &desktop);
+            KeyboardDriver keyboard(&desktop);
         #else
             PrintfKeyboardEventHandler kbhandler;
             KeyboardDriver keyboard(&kbhandler);
@@ -240,7 +240,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
 
 
         #ifdef GRAPHICSMODE
-            MouseDriver mouse(&interrupts, &desktop);
+            MouseDriver mouse(&desktop);
         #else
             MouseToConsole mousehandler;
             MouseDriver mouse(&mousehandler);
@@ -329,13 +329,15 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
 
     printf("\n[INFO]: Interrupts are active!");
 
-    arp.BroadcastMACAddress(gip_be);
+    //arp.BroadcastMACAddress(gip_be);
 
-    //PrintfTCPHandler tcphandler;
-    //TransmissionControlProtocolSocket* tcpsocket = tcp.Listen(1234);
-    //tcp.Bind(tcpsocket, &tcphandler);
-    //tcpsocket->Send((uint8_t*)"Hello TCP!", 10);
-
+    printf("\n[INFO]: Starting TCP manager.");
+    PrintfTCPHandler tcphandler;
+    TransmissionControlProtocolSocket* tcpsocket = tcp.Listen(1234);
+    tcp.Bind(tcpsocket, &tcphandler);
+    printf("\n[INFO]: TCP manager is running!");
+    tcpsocket->Send((uint8_t*)"Hello TCP!", 10);
+    printf("\n[INFO]: Test TCP message sent.");
 
     icmp.RequestEchoReply(gip_be);
 
