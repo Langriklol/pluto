@@ -5,6 +5,7 @@ using namespace pluto;
 using namespace pluto::common;
 using namespace pluto::gui;
 
+void printf(char *);
 
 Desktop::Desktop(common::int32_t w, common::int32_t h,
                 common::uint8_t r, common::uint8_t g, common::uint8_t b)
@@ -46,7 +47,6 @@ void Desktop::OnMouseMove(int x, int y)
 {
     x /= 4;
     y /= 4;
-    
     int32_t newMouseX = MouseX + x;
     if(newMouseX < 0) newMouseX = 0;
     if(newMouseX >= w) newMouseX = w - 1;
