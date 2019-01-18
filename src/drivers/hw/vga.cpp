@@ -129,10 +129,14 @@ void VideoGraphicsArray::PutPixel(int32_t x, int32_t y,  uint8_t colorIndex)
     || y < 0 || 200 <= y)
         return;
 
-    uint8_t* pixelAddress = GetFrameBufferSegment() + 320*y + x;
-    *pixelAddress = colorIndex;
+    buffer[320*y + x] = colorIndex;
 }
-
+void VideoGraphicsArray::flush(){
+    uint8_t* pixelAddress = GetFrameBufferSegment();
+    for(int x = 0; x < 320; x++)
+        for(int y = 0; y < 200; y++)
+            pixelAddress[320*y + x] = buffer[320*y + x] ;
+}
 uint8_t VideoGraphicsArray::GetColorIndex(uint8_t r, uint8_t g, uint8_t b)
 {
     if(r == 0x00 && g == 0x00 && b == 0x00) return 0x00; // black
