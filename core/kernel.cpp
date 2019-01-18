@@ -22,7 +22,7 @@
 #include "../include/net/tcp.h"
 
 
-#define GRAPHICSMODE
+//#define GRAPHICSMODE
 
 
 using namespace pluto;
@@ -34,7 +34,7 @@ using namespace pluto::net;
 
 void printf(char* str)
 {
-    static uint16_t* VideoMemory = (uint16_t*)0xb8000;
+    uint16_t* VideoMemory = (uint16_t*)0xb8000;
 
     static uint8_t x=0,y=0;
 
@@ -47,7 +47,7 @@ void printf(char* str)
                 y++;
                 break;
             default:
-                VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0xFF00) | str[i];
+                VideoMemory[80*y+x] = (0x0F00) | str[i];
                 x++;
                 break;
         }
@@ -62,7 +62,7 @@ void printf(char* str)
         {
             for(y = 0; y < 25; y++)
                 for(x = 0; x < 80; x++)
-                    VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0xFF00) | ' ';
+                    VideoMemory[80*y+x] = 0;
             x = 0;
             y = 0;
         }
@@ -225,7 +225,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     printf("[INFO]: Initializing hardware (STAGE 1)... ");
 
     #ifdef GRAPHICSMODE
-        Desktop desktop(320,200, 0x08,0x08,0x08);
+        Desktop desktop(320,200, 0x00,0xA8,0x00);
     #endif
 
     DriverManager drvManager;
@@ -263,9 +263,9 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
 
     #ifdef GRAPHICSMODE
         vga.SetMode(320,200,256);
-        Window win1(&desktop, 10,10,20,20, 0x08,0x00,0x00);
+        Window win1(&desktop, 10,10,20,20, 0xA8,0x00,0x00);
         desktop.AddChild(&win1);
-        Window win2(&desktop, 40,15,30,30, 0x00,0x08,0x00);
+        Window win2(&desktop, 40,15,30,30, 0x00,0xA8,0x00);
         desktop.AddChild(&win2);
     #endif // GRAPHICSMODE
 	printf("DONE!\n\n");
@@ -336,10 +336,10 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     TransmissionControlProtocolSocket* tcpsocket = tcp.Listen(1234);
     tcp.Bind(tcpsocket, &tcphandler);
     printf("\n[INFO]: TCP manager is running!");
-    tcpsocket->Send((uint8_t*)"Hello TCP!", 10);
+    //tcpsocket->Send((uint8_t*)"Hello TCP!", 10);
     printf("\n[INFO]: Test TCP message sent.");
 
-    icmp.RequestEchoReply(gip_be);
+    //icmp.RequestEchoReply(gip_be);
 
     //PrintfUDPHandler udphandler;
     //UserDatagramProtocolSocket* udpsocket = udp.Connect(gip_be, 1234);
@@ -348,6 +348,20 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
 
     //UserDatagramProtocolSocket* udpsocket = udp.Listen(1234);
     //udp.Bind(udpsocket, &udphandler);
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
+    printf("\n[INFO]: Running GUI");
 
     #ifdef GRAPHICSMODE
         printf("\n[INFO]: Running GUI");
