@@ -331,12 +331,18 @@ extern "C" void kernelMain(const void *multiboot_structure, uint32_t /*multiboot
     desktop.AddChild(&win1);
     Window win2(&desktop, 40, 15, 30, 30, 0x00, 0x00, 0xA8);
     desktop.AddChild(&win2);
+    int32_t y = 10;
 #endif
 
     while (1) {
 #ifdef GRAPHICSMODE
         desktop.Draw(&vga);
         vga.flush();
+        win1.Move(y, y);
+        win2.Resize(y, y);
+        y++;
+        if(y == 100)
+            y = 10;
 #endif
     }
 }

@@ -16,6 +16,28 @@ Window::~Window()
 {
 }
 
+void Window::Move(common::int32_t y, common::int32_t x)
+{
+    this->y = y;
+    this->x = x;
+}
+
+void Window::Resize(common::int32_t h, common::int32_t w)
+{
+    this->h = h;
+    this->w = w;
+}
+
+int32_t Window::GetPositionY()
+{
+    return this->y;
+}
+
+int32_t Window::GetPositionX()
+{
+    return this->x;
+}
+
 void Window::OnMouseDown(common::int32_t x, common::int32_t y, common::uint8_t button)
 {
     Dragging = button == 1;

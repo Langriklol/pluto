@@ -31,7 +31,28 @@ bool CompositeWidget::AddChild(Widget* child)
     return true;
 }
 
+void CompositeWidget::Move(common::int32_t y, common::int32_t x)
+{
+    this->y = y;
+    this->x = x;
+}
 
+
+void CompositeWidget::Resize(common::int32_t w, common::int32_t h)
+{
+    this->w = w;
+    this->h = h;
+}
+
+int32_t CompositeWidget::GetPositionY()
+{
+    return this->y;
+}
+
+int32_t CompositeWidget::GetPositionX()
+{
+    return this->x;
+}
 void CompositeWidget::Draw(GraphicsContext* gc)
 {
     Widget::Draw(gc);

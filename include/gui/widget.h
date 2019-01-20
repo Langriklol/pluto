@@ -37,6 +37,10 @@ namespace pluto
             virtual bool ContainsCoordinate(common::int32_t x, common::int32_t y);
             
             virtual void Draw(common::GraphicsContext* gc);
+            virtual void Move(common::int32_t y, common::int32_t x);
+            virtual void Resize(common::int32_t w, common::int32_t h);
+            virtual common::int32_t GetPositionY();
+            virtual common::int32_t GetPositionX();
             virtual void OnMouseDown(common::int32_t x, common::int32_t y, common::uint8_t button);
             virtual void OnMouseUp(common::int32_t x, common::int32_t y, common::uint8_t button);
             virtual void OnMouseMove(common::int32_t oldx, common::int32_t oldy, common::int32_t newx, common::int32_t newy);

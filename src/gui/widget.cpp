@@ -1,4 +1,3 @@
- 
 #include <gui/widget.h>
 
 using namespace pluto::common;
@@ -28,6 +27,28 @@ void Widget::GetFocus(Widget* widget)
 {
     if(parent != 0)
         parent->GetFocus(widget);
+}
+
+void Widget::Move(common::int32_t y, common::int32_t x)
+{
+    this->y = y;
+    this->x = x;
+}
+
+void Widget::Resize(common::int32_t h, common::int32_t w)
+{
+    this->h = h;
+    this->w = w;
+}
+
+int32_t Widget::GetPositionY()
+{
+    return this->y;
+}
+
+int32_t Widget::GetPositionX()
+{
+    return this->x;
 }
 
 void Widget::ModelToScreen(common::int32_t &x, common::int32_t& y)

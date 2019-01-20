@@ -1,4 +1,3 @@
- 
 #include <gui/desktop.h>
 
 using namespace pluto;
