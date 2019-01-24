@@ -44,6 +44,9 @@ namespace pluto
     public:
         Task(GlobalDescriptorTable *gdt, void entrypoint());
         ~Task();
+
+    protected:
+        void* entrypoint;
     };
 
 
@@ -57,6 +60,7 @@ namespace pluto
         TaskManager();
         ~TaskManager();
         bool AddTask(Task* task);
+        void Exec();
         CPUState* Schedule(CPUState* cpustate);
     };
 

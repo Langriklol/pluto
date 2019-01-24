@@ -22,7 +22,7 @@
 #include "../include/net/tcp.h"
 
 
-#define GRAPHICSMODE
+//#define GRAPHICSMODE
 
 
 using namespace pluto;
@@ -193,12 +193,10 @@ extern "C" void kernelMain(const void *multiboot_structure, uint32_t /*multiboot
     printf("\n");
 
     TaskManager taskManager;
-    /*
     Task task1(&gdt, taskA);
     Task task2(&gdt, taskB);
     taskManager.AddTask(&task1);
     taskManager.AddTask(&task2);
-    */
 
     InterruptManager interrupts(&gdt);
     SyscallHandler syscalls(0x80);
@@ -335,6 +333,7 @@ extern "C" void kernelMain(const void *multiboot_structure, uint32_t /*multiboot
 #endif
 
     while (1) {
+        taskManager.Exec();
 #ifdef GRAPHICSMODE
         desktop.Draw(&vga);
         vga.flush();
