@@ -35,7 +35,7 @@ objects = build/kernel.o \
           build/gui/Window.o \
           build/gui/window.o
 
-run: build/pluto.iso
+run: build/kernel.bin
 	 qemu-system-i386 -kernel build/kernel.bin
 
 build/%.o: core/%.cpp
@@ -82,9 +82,7 @@ build/kernel.bin: linker.ld $(objects)
 	ld $(LDPARAMS) -T $< -o $@ $(objects)
 
 build/pluto.iso: build/kernel.bin
-	mkdir build/iso
-	mkdir build/iso/boot
-	mkdir build/iso/boot/grub
+	mkdir -p build/iso/boot/grub
 	cp build/kernel.bin build/iso/boot/
 	echo 'set timeout=0'                      > build/iso/boot/grub/grub.cfg
 	echo 'set default=0'                     >> build/iso/boot/grub/grub.cfg
