@@ -1,4 +1,3 @@
-
 #include "../include/multitasking.h"
 
 using namespace pluto;
@@ -34,6 +33,12 @@ Task::Task(GlobalDescriptorTable *gdt, void entrypoint()) {
 
 }
 
+void TaskManager::process() {
+    for (int i = 0; i < numTasks; ++i) {
+        ((void (*)(void))tasks[i]->entrypoint)();
+    }
+}
+
 Task::~Task() {
 }
 
@@ -51,12 +56,6 @@ bool TaskManager::AddTask(Task *task) {
         return false;
     tasks[numTasks++] = task;
     return true;
-}
-
-void TaskManager::Exec() {
-    for (int i = 0; i < sizeof(tasks); ++i) {
-        tasks[i]->entrypoint();
-    }
 }
 
 CPUState *TaskManager::Schedule(CPUState *cpustate) {

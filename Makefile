@@ -1,8 +1,8 @@
 # sudo apt-get install g++ binutils libc6-dev-i386
 # sudo apt-get install qemu qemu-system-i386 grub-legacy xorriso
 
-#GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -Wall -pedantic -Wextra -g
-GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings -g
+GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -Wall -pedantic -Wextra -g
+#GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -g
 ASPARAMS = --32
 CC = gcc
 LDPARAMS = -melf_i386
@@ -34,9 +34,9 @@ objects = build/kernel.o \
           build/gui/desktop.o \
           build/gui/widget.o \
           build/gui/Window.o \
-          build/gui/window.o \
+          build/gui/window.o
 
-run: build/pluto.iso
+run: build/kernel.bin
 	 qemu-system-i386 -kernel build/kernel.bin
 
 build/%.o: core/%.cpp
@@ -83,9 +83,7 @@ build/kernel.bin: linker.ld $(objects)
 	ld $(LDPARAMS) -T $< -o $@ $(objects)
 
 build/pluto.iso: build/kernel.bin
-	mkdir build/iso
-	mkdir build/iso/boot
-	mkdir build/iso/boot/grub
+	mkdir -p build/iso/boot/grub
 	cp build/kernel.bin build/iso/boot/
 	echo 'set timeout=0'                      > build/iso/boot/grub/grub.cfg
 	echo 'set default=0'                     >> build/iso/boot/grub/grub.cfg
