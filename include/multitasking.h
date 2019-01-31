@@ -37,15 +37,11 @@ namespace pluto
 
     class Task
     {
-    friend class TaskManager;
-    private:
+    public:
         common::uint8_t stack[4096]; // 4 KiB
         CPUState* cpustate;
-    public:
         Task(GlobalDescriptorTable *gdt, void entrypoint());
         ~Task();
-
-    protected:
         void* entrypoint;
     };
 

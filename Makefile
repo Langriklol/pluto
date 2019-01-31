@@ -2,15 +2,15 @@
 # sudo apt-get install qemu qemu-system-i386 grub-legacy xorriso
 
 #GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -Wall -pedantic -Wextra -g
-GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -g
+GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings -g
 ASPARAMS = --32
+CC = gcc
 LDPARAMS = -melf_i386
 
 objects = build/kernel.o \
           build/loader.o \
           build/gdt.o \
           build/memorymanagement.o \
-          build/multitasking.o \
           build/hardwarecommunication/interruptstubs.o \
           build/syscalls.o \
           build/net/arp.o \
@@ -29,34 +29,35 @@ objects = build/kernel.o \
           build/drivers/hw/vga.o \
           build/drivers/hw/driver.o \
           build/drivers/hw/mouse.o \
+          build/multitasking.o \
           build/gui/CompositeWidget.o \
           build/gui/desktop.o \
           build/gui/widget.o \
           build/gui/Window.o \
-          build/gui/window.o
+          build/gui/window.o \
 
 run: build/pluto.iso
 	 qemu-system-i386 -kernel build/kernel.bin
 
 build/%.o: core/%.cpp
 	mkdir -p $(@D)
-	gcc $(GCCPARAMS) -c -o $@ $<
+	$(CC) $(GCCPARAMS) -c -o $@ $<
 
 build/%.o: src/drivers/%.cpp
 	mkdir -p $(@D)
-	gcc $(GCCPARAMS) -c -o $@ $<
+	$(CC) $(GCCPARAMS) -c -o $@ $<
 
 build/%.o: src/gui/%.cpp
 	mkdir -p $(@D)
-	gcc $(GCCPARAMS) -c -o $@ $<
+	$(CC) $(GCCPARAMS) -c -o $@ $<
 
 build/%.o: src/drivers/hw/%.cpp
 	mkdir -p $(@D)
-	gcc $(GCCPARAMS) -c -o $@ $<
+	$(CC) $(GCCPARAMS) -c -o $@ $<
 
 build/%.o: src/hardwarecommunication/%.cpp
 	mkdir -p $(@D)
-	gcc $(GCCPARAMS) -c -o $@ $<
+	$(CC) $(GCCPARAMS) -c -o $@ $<
 
 build/%.o: src/hardwarecommunication/%.s
 	mkdir -p $(@D)
@@ -64,11 +65,11 @@ build/%.o: src/hardwarecommunication/%.s
 
 build/%.o: src/drivers/net/%.cpp
 	mkdir -p $(@D)
-	gcc $(GCCPARAMS) -c -o $@ $<
+	$(CC) $(GCCPARAMS) -c -o $@ $<
 
 build/%.o: src/%.cpp
 	mkdir -p $(@D)
-	gcc $(GCCPARAMS) -c -o $@ $<
+	$(CC) $(GCCPARAMS) -c -o $@ $<
 
 build/%.o: src/%.s
 	mkdir -p $(@D)

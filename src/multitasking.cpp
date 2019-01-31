@@ -2,7 +2,6 @@
 #include "../include/multitasking.h"
 
 using namespace pluto;
-using namespace pluto::common;
 
 
 Task::Task(GlobalDescriptorTable *gdt, void entrypoint()) {
