@@ -88,7 +88,7 @@ build/pluto.iso: build/kernel.bin
 	echo '  multiboot /boot/kernel.bin'    >> build/iso/boot/grub/grub.cfg
 	echo '  boot'                            >> build/iso/boot/grub/grub.cfg
 	echo '}'                                 >> build/iso/boot/grub/grub.cfg
-	grub-mkrescue --output=build/pluto.iso
+	grub-mkrescue --output=build/pluto.iso build/iso
 
 install: build/kernel.bin
 	sudo cp $< /boot/kernel.bin
