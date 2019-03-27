@@ -170,11 +170,6 @@ void taskB()
         sysprintf("B");
 }
 
-
-
-
-
-
 typedef void (*constructor)();
 extern "C" constructor start_ctors;
 extern "C" constructor end_ctors;
@@ -184,32 +179,14 @@ extern "C" void callConstructors()
         (*i)();
 }
 
-
-
 extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot_magic*/)
 {
-    printf("PLUTO BOOTED SUCCESSFULLY!\n");
-
     GlobalDescriptorTable gdt;
-
 
     uint32_t* memupper = (uint32_t*)(((size_t)multiboot_structure) + 8);
     size_t heap = 10*1024*1024;
     MemoryManager memoryManager(heap, (*memupper)*1024 - heap - 10*1024);
-
-    printf("heap: 0x");
-    printfHex((heap >> 24) & 0xFF);
-    printfHex((heap >> 16) & 0xFF);
-    printfHex((heap >> 8 ) & 0xFF);
-    printfHex((heap      ) & 0xFF);
-
     void* allocated = memoryManager.malloc(1024);
-    printf("\nallocated: 0x");
-    printfHex(((size_t)allocated >> 24) & 0xFF);
-    printfHex(((size_t)allocated >> 16) & 0xFF);
-    printfHex(((size_t)allocated >> 8 ) & 0xFF);
-    printfHex(((size_t)allocated      ) & 0xFF);
-    printf("\n");
 
     TaskManager taskManager;
     /*
@@ -233,7 +210,6 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
         #ifdef GRAPHICSMODE
             KeyboardDriver keyboard(&interrupts, &desktop);
         #else
-            PrintfKeyboardEventHandler kbhandler;
             KeyboardDriver keyboard(&kbhandler);
         #endif
         drvManager.AddDriver(&keyboard);
@@ -323,14 +299,9 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     InternetControlMessageProtocol icmp(&ipv4);
     UserDatagramProtocolProvider udp(&ipv4);
     TransmissionControlProtocolProvider tcp(&ipv4);
-	printf("[INFO]: IP Address of default gateway saved!");
-
     interrupts.Activate();
 
-    printf("[INFO]: Interrupts are active!");
-
     arp.BroadcastMACAddress(gip_be);
-
 
     PrintfTCPHandler tcphandler;
     TransmissionControlProtocolSocket* tcpsocket = tcp.Listen(1234);
@@ -348,7 +319,8 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     //UserDatagramProtocolSocket* udpsocket = udp.Listen(1234);
     //udp.Bind(udpsocket, &udphandler);
 
-
+    printf("PLUTO BOOT SUCCESSFULL!\n");
+	
     while(1)
     {
         #ifdef GRAPHICSMODE
